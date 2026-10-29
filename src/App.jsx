@@ -7,7 +7,9 @@ function App() {
       </header>
       <aside className='col-start-1 col-end-2 row-span-2 row-start-1 bg-sidebar p-4'>
         <div className='flex items-center gap-3 mb-8'>
-          <div className='flex justify-center items-center bg-primary rounded-lg size-10'>{/* آیکون لوگو */}</div>
+          <div className='flex justify-center items-center bg-white rounded-lg size-16'>
+            <img src='/logo.png' />
+          </div>
 
           <div>
             <h2 className='font-semibold text-white text-base'>پیستافلو</h2>
@@ -20,7 +22,7 @@ function App() {
             <li>
               <a
                 href='#'
-                className='flex items-center gap-3 bg-slate-600 px-3 py-2 rounded-l-lg text-white text-sm transition-colors duration-150'
+                className='flex items-center gap-3 bg-primary px-3 py-2 rounded-lg text-white text-sm transition-colors duration-150'
               >
                 <LuLayoutDashboard size={20} />
                 <span>داشبورد</span>
@@ -29,7 +31,7 @@ function App() {
             <li>
               <a
                 href='#'
-                className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-l-lg text-slate-300 hover:text-white text-sm transition-colors duration-150'
+                className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-lg text-slate-300 hover:text-white text-sm transition-colors duration-150'
               >
                 <LuUsers size={20} />
                 <span>مشتریان</span>
@@ -38,7 +40,7 @@ function App() {
             <li>
               <a
                 href='#'
-                className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-l-lg text-slate-300 hover:text-white text-sm transition-colors duration-150'
+                className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-lg text-slate-300 hover:text-white text-sm transition-colors duration-150'
               >
                 <LuBox size={20} />
                 <span>ورودی های پسته</span>
