@@ -1,4 +1,4 @@
-import { LuPackageCheck, LuWeight, LuUsers } from 'react-icons/lu';
+import { LuPackageCheck, LuWeight, LuUsers, LuLayoutDashboard, LuBox } from 'react-icons/lu';
 function App() {
   return (
     <div className='grid grid-cols-[240px_1fr] grid-rows-[64px_1fr] h-screen font-vazir'>
@@ -6,7 +6,7 @@ function App() {
         سربرگ
       </header>
       <aside className='col-start-1 col-end-2 row-span-2 row-start-1 bg-sidebar p-4'>
-        <div className='flex items-center gap-3'>
+        <div className='flex items-center gap-3 mb-8'>
           <div className='flex justify-center items-center bg-primary rounded-lg size-10'>{/* آیکون لوگو */}</div>
 
           <div>
@@ -14,6 +14,38 @@ function App() {
             <p className='mt-1 text-slate-400 text-xs'>مدیریت کارخانه پسته</p>
           </div>
         </div>
+
+        <nav className='text-white'>
+          <ul className='flex flex-col gap-1'>
+            <li>
+              <a
+                href='#'
+                className='flex items-center gap-3 bg-slate-600 px-3 py-2 rounded-l-lg text-white text-sm transition-colors duration-150'
+              >
+                <LuLayoutDashboard size={20} />
+                <span>داشبورد</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href='#'
+                className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-l-lg text-slate-300 hover:text-white text-sm transition-colors duration-150'
+              >
+                <LuUsers size={20} />
+                <span>مشتریان</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href='#'
+                className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-l-lg text-slate-300 hover:text-white text-sm transition-colors duration-150'
+              >
+                <LuBox size={20} />
+                <span>ورودی های پسته</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </aside>
       <main className='col-start-2 col-end-3 row-start-2 row-end-3 p-6'>
         <div className='mb-6'>
@@ -28,7 +60,7 @@ function App() {
 
             <div>
               <p className='text-muted text-base'>دریافتی‌های امروز</p>
-              <p className='mt-2 font-bold text-text1 text-2xl'>۲۴ محموله</p>
+              <p className='mt-2 font-bold text-heading text-2xl'>۲۴ محموله</p>
               <p className='mt-2 text-muted text-xs'>تعداد محموله‌های ثبت‌شده</p>
             </div>
           </div>
@@ -53,7 +85,7 @@ function App() {
             <div>
               <p className='text-muted text-base'>تعداد مشتریان</p>
               <p className='mt-2 font-bold text-heading text-2xl'>۱۸۶ نفر</p>
-              <p className='mt-2 text-secondary text-xs'>مشتریان ثبت‌شده در سیستم</p>
+              <p className='mt-2 text-muted text-xs'>مشتریان ثبت‌شده در سیستم</p>
             </div>
           </div>
         </div>
