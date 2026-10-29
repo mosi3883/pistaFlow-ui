@@ -1,4 +1,4 @@
-import { LuUsers, LuLayoutDashboard, LuBox, LuPackage, LuWallet, LuChartNoAxesCombined } from 'react-icons/lu';
+import { LuUsers, LuLayoutDashboard, LuPackage, LuWallet, LuChartNoAxesCombined } from 'react-icons/lu';
 import { NavLink } from 'react-router';
 function Navbar() {
   return (
