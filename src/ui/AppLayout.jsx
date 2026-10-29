@@ -21,7 +21,11 @@ function AppLayout() {
         <div className='mt-auto'>
           <NavLink
             to='/settings'
-            className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-lg h-11 text-slate-300 hover:text-white text-sm transition-colors duration-150'
+            className={({ isActive }) =>
+              `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
+                isActive ? 'active' : 'hover:bg-slate-700  text-slate-300 hover:text-white'
+              }`
+            }
           >
             <LuSettings size={20} />
             <span>تنظیمات</span>

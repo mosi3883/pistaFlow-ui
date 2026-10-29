@@ -83,6 +83,6 @@
 
 @layer components {
   .active {
-    @apply bg-primary hover:bg-primary text-white;
+    @apply bg-primary text-white;
   }
 }
