@@ -1,4 +1,4 @@
-import { LuUsers, LuLayoutDashboard, LuBox } from 'react-icons/lu';
+import { LuUsers, LuLayoutDashboard, LuBox, LuPackage, LuWallet, LuChartNoAxesCombined } from 'react-icons/lu';
 import { NavLink } from 'react-router';
 function Navbar() {
   return (
@@ -6,8 +6,8 @@ function Navbar() {
       <ul className='flex flex-col gap-1'>
         <li>
           <NavLink
-            href='#'
-            className='flex items-center gap-3 bg-primary px-3 py-2 rounded-lg h-11 text-white text-sm transition-colors duration-150'
+            to='/'
+            className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-lg h-11 text-slate-300 hover:text-white text-sm transition-colors duration-150'
           >
             <LuLayoutDashboard size={20} />
             <span>داشبورد</span>
@@ -15,7 +15,7 @@ function Navbar() {
         </li>
         <li>
           <NavLink
-            href='#'
+            to='/customers'
             className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-lg h-11 text-slate-300 hover:text-white text-sm transition-colors duration-150'
           >
             <LuUsers size={20} />
@@ -24,11 +24,29 @@ function Navbar() {
         </li>
         <li>
           <NavLink
-            href='#'
+            to='/deliveries'
             className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-lg h-11 text-slate-300 hover:text-white text-sm transition-colors duration-150'
           >
-            <LuBox size={20} />
+            <LuPackage size={20} />
             <span>ورودی های پسته</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to='/accounting'
+            className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-lg h-11 text-slate-300 hover:text-white text-sm transition-colors duration-150'
+          >
+            <LuWallet size={20} />
+            <span>حسابداری</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to='/reports'
+            className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-lg h-11 text-slate-300 hover:text-white text-sm transition-colors duration-150'
+          >
+            <LuChartNoAxesCombined size={20} />
+            <span>گزارش‌ها</span>
           </NavLink>
         </li>
       </ul>

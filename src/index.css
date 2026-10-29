@@ -80,3 +80,9 @@
 
   --font-vazir: 'Vazirmatn', sans-serif;
 }
+
+@layer components {
+  .active {
+    @apply bg-primary hover:bg-primary text-white;
+  }
+}

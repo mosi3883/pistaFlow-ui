@@ -1,11 +1,12 @@
-import { Outlet } from 'react-router';
+import { NavLink, Outlet } from 'react-router';
 import Header from './Header';
 import Navbar from './Navbar';
+import { LuSettings } from 'react-icons/lu';
 function AppLayout() {
   return (
     <div className='grid grid-cols-[240px_1fr] grid-rows-[64px_1fr] h-screen font-vazir'>
       <Header />
-      <aside className='col-start-1 col-end-2 row-span-2 row-start-1 bg-sidebar p-4'>
+      <aside className='flex flex-col col-start-1 col-end-2 row-span-2 row-start-1 bg-sidebar p-4'>
         <div className='flex items-center gap-3 mb-8'>
           <div className='flex justify-center items-center bg-white rounded-lg size-12'>
             <img src='/logo.png' />
@@ -17,6 +18,15 @@ function AppLayout() {
           </div>
         </div>
         <Navbar />
+        <div className='mt-auto'>
+          <NavLink
+            to='/settings'
+            className='flex items-center gap-3 hover:bg-slate-700 px-3 py-2 rounded-lg h-11 text-slate-300 hover:text-white text-sm transition-colors duration-150'
+          >
+            <LuSettings size={20} />
+            <span>تنظیمات</span>
+          </NavLink>
+        </div>
       </aside>
       <main className='col-start-2 col-end-3 row-start-2 row-end-3 p-6'>
         <Outlet />
