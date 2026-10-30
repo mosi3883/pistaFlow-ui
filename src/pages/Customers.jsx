@@ -1,21 +1,14 @@
-import { Link } from 'react-router';
+import CustomerHeader from '../components/customers/CustomerHeader';
+import CustomerTable from '../components/customers/CustomerTable';
 
 function Customers() {
   return (
     <>
-      <header className='flex justify-between items-center mb-6'>
-        <div>
-          <h2 className='mb-2 font-semibold text-heading text-2xl'>مشتریان</h2>
-          <p className='text-muted text-sm'>مدیریت اطلاعات مشتریان کارخانه</p>
-        </div>
-        <Link
-          to='/customers/new'
-          className='flex justify-center items-center bg-primary hover:bg-blue-700 px-4 rounded-lg h-10 text-white transition-colors duration-150'
-        >
-          + مشتری جدید
-        </Link>
-      </header>
-      <div className='bg-white p-6 border border-slate-200 rounded-xl'>محتوای کارت</div>
+      <CustomerHeader />
+      <div className='bg-white p-6 border border-slate-200 rounded-xl'>
+        <p className='mb-3 text-muted text-sm'>۱۸۶ مشتری</p>
+        <CustomerTable />
+      </div>
     </>
   );
 }
