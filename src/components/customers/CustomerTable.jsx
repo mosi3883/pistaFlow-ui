@@ -40,7 +40,7 @@ function CustomerTable() {
             </div>
           </td>
         </tr>
-        <tr className='hover:bg-slate-50 border-slate-100 border-b transition-colors duration-150'>
+        <tr className='hover:bg-slate-50 transition-colors duration-150'>
           <td className='px-4 py-4 text-sm text-right'>حاج غلامعلی احمدآبادی</td>
           <td className='px-4 py-4 text-sm text-right'>0123456781</td>
           <td className='px-4 py-4 text-sm text-right'>
