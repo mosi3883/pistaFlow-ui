@@ -14,7 +14,9 @@ function CustomerTable() {
       <tbody>
         <tr className='hover:bg-slate-50 border-slate-100 border-b transition-colors duration-150'>
           <td className='px-4 py-4 text-sm text-right'>محمد احمدی</td>
-          <td className='px-4 py-4 text-sm text-right'>0123456789</td>
+          <td className='px-4 py-4 text-sm text-right' dir='ltr'>
+            0123456789
+          </td>
           <td className='px-4 py-4 text-sm text-right'>
             <div className='flex justify-center gap-3'>
               <Link to='#' className='p-2'>
@@ -28,7 +30,9 @@ function CustomerTable() {
         </tr>
         <tr className='hover:bg-slate-50 border-slate-100 border-b transition-colors duration-150'>
           <td className='px-4 py-4 text-sm text-right'>علی رضایی</td>
-          <td className='px-4 py-4 text-sm text-right'>0123456780</td>
+          <td className='px-4 py-4 text-sm text-right' dir='ltr'>
+            0123456780
+          </td>
           <td className='px-4 py-4 text-sm text-right'>
             <div className='flex justify-center gap-3'>
               <Link to='#' className='p-2'>
@@ -42,7 +46,9 @@ function CustomerTable() {
         </tr>
         <tr className='hover:bg-slate-50 transition-colors duration-150'>
           <td className='px-4 py-4 text-sm text-right'>حاج غلامعلی احمدآبادی</td>
-          <td className='px-4 py-4 text-sm text-right'>0123456781</td>
+          <td className='px-4 py-4 text-sm text-right' dir='ltr'>
+            0123456781
+          </td>
           <td className='px-4 py-4 text-sm text-right'>
             <div className='flex justify-center gap-3'>
               <Link to='#' className='p-2'>
