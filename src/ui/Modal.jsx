@@ -2,21 +2,21 @@ import { createPortal } from 'react-dom';
 import { LuX } from 'react-icons/lu';
 
 function Modal({ children, isOpen, handleClose }) {
+  if (!isOpen) return null;
   return createPortal(
-    isOpen && (
-      <div className='fixed inset-0 bg-black/40'>
-        <div className='top-1/2 right-1/2 fixed bg-white p-6 max-w-md translate-1/2'>
-          <button
-            onClick={handleClose}
-            className='top-1 left-1 fixed p-1 border border-slate-200 rounded-2xl cursor-pointer'
-          >
-            <LuX />
-          </button>
+    <div className='z-50 fixed inset-0 flex justify-center items-center bg-black/40 backdrop-blur-xs p-4'>
+      <div className='relative bg-white shadow-xl p-6 rounded-xl w-full max-w-4xl'>
+        <button
+          onClick={handleClose}
+          className='top-4 left-4 absolute hover:bg-slate-100 p-2 border border-slate-200 rounded-lg text-slate-500 transition-colors cursor-pointer'
+          aria-label='بستن پنجره'
+        >
+          <LuX size={20} />
+        </button>
 
-          {children}
-        </div>
+        {children}
       </div>
-    ),
+    </div>,
     document.getElementById('modal'),
   );
 }

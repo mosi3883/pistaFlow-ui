@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import { LuSettings } from 'react-icons/lu';
 function AppLayout() {
   return (
-    <div className='grid grid-cols-[240px_1fr] grid-rows-[64px_1fr] h-screen font-vazir'>
+    <div className='grid grid-cols-[240px_1fr] grid-rows-[64px_1fr] max-h-screen font-vazir'>
       <Header />
       <aside className='flex flex-col col-start-1 col-end-2 row-span-2 row-start-1 bg-sidebar p-4'>
         <div className='flex items-center gap-3 mb-8'>
@@ -32,7 +32,7 @@ function AppLayout() {
           </NavLink>
         </div>
       </aside>
-      <main className='col-start-2 col-end-3 row-start-2 row-end-3 p-6'>
+      <main className='col-start-2 col-end-3 row-start-2 row-end-3 p-6 overflow-auto'>
         <Outlet />
       </main>
     </div>
