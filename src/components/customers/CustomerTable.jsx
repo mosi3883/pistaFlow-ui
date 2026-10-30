@@ -3,9 +3,9 @@ import { Link } from 'react-router';
 
 function CustomerTable() {
   return (
-    <table className='border w-full'>
+    <table className='w-full'>
       <thead className='bg-slate-50 text-muted'>
-        <tr className='border-slate-200 border-b'>
+        <tr className='border-slate-100 border-b'>
           <th className='px-4 py-3 text-xs text-right'>نام مشتری</th>
           <th className='px-4 py-3 text-xs text-right'>شماره تلفن</th>
           <th className='px-4 py-3 text-xs text-center'>عملیات</th>
