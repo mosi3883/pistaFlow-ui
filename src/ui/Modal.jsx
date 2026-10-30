@@ -1,8 +1,21 @@
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { LuX } from 'react-icons/lu';
 
 function Modal({ children, isOpen, handleClose }) {
+  useEffect(() => {
+    function fn(e) {
+      if (e.key === 'Escape') {
+        handleClose();
+      }
+    }
+    document.documentElement.addEventListener('keyup', fn);
+    return function () {
+      document.documentElement.removeEventListener('keyup', fn);
+    };
+  }, [handleClose]);
   if (!isOpen) return null;
+
   return createPortal(
     <div
       onClick={handleClose}
