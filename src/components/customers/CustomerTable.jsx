@@ -5,9 +5,9 @@ function CustomerTable() {
   return (
     <table className='border w-full'>
       <thead className='bg-slate-50 text-muted'>
-        <tr>
-          <th className='px-4 py-3 text-xs text-center'>نام مشتری</th>
-          <th className='px-4 py-3 text-xs text-center'>شماره تلفن</th>
+        <tr className='border-slate-200 border-b'>
+          <th className='px-4 py-3 text-xs text-right'>نام مشتری</th>
+          <th className='px-4 py-3 text-xs text-right'>شماره تلفن</th>
           <th className='px-4 py-3 text-xs text-center'>عملیات</th>
         </tr>
       </thead>
