@@ -1,0 +1,23 @@
+import { Link } from 'react-router';
+
+function Customers() {
+  return (
+    <>
+      <header className='flex justify-between items-center mb-6'>
+        <div>
+          <h2 className='mb-2 font-semibold text-heading text-2xl'>مشتریان</h2>
+          <p className='text-muted text-sm'>مدیریت اطلاعات مشتریان کارخانه</p>
+        </div>
+        <Link
+          to='/customers/new'
+          className='flex justify-center items-center bg-primary hover:bg-blue-700 px-4 rounded-lg h-10 text-white transition-colors duration-150'
+        >
+          + مشتری جدید
+        </Link>
+      </header>
+      <div className='bg-white p-6 border border-slate-200 rounded-xl'>محتوای کارت</div>
+    </>
+  );
+}
+
+export default Customers;
