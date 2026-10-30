@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { LuX } from 'react-icons/lu';
 
-function Modal({ children, isOpen, handleClose }) {
+function Modal({ children, isOpen, handleClose, className }) {
   useEffect(() => {
+    if (!isOpen) return;
     function fn(e) {
       if (e.key === 'Escape') {
         handleClose();
@@ -13,15 +14,17 @@ function Modal({ children, isOpen, handleClose }) {
     return function () {
       document.documentElement.removeEventListener('keyup', fn);
     };
-  }, [handleClose]);
+  }, [handleClose, isOpen]);
   if (!isOpen) return null;
-
   return createPortal(
     <div
       onClick={handleClose}
       className='z-50 fixed inset-0 flex justify-center items-center bg-black/40 backdrop-blur-xs p-4'
     >
-      <div className='relative bg-white shadow-xl p-6 rounded-xl w-full max-w-4xl' onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`relative bg-white shadow-xl p-6 rounded-xl w-full ${className}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           onClick={handleClose}
           className='top-4 left-4 absolute hover:bg-slate-100 p-2 border border-slate-200 rounded-lg text-slate-500 transition-colors cursor-pointer'

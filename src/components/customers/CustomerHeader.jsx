@@ -16,7 +16,7 @@ function CustomerHeader() {
       >
         + مشتری جدید
       </button>
-      <Modal isOpen={isModalOpen} handleClose={() => setIsModalOpen(false)}>
+      <Modal isOpen={isModalOpen} handleClose={() => setIsModalOpen(false)} className='max-w-md'>
         <h3 className='mb-4 font-semibold text-heading'>افزودن مشتری</h3>
         <CreateCustomerForm />
       </Modal>
