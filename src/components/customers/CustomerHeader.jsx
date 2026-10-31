@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Modal from '../../ui/Modal';
 import CreateCustomerForm from './CreateCustomerForm';
+import Button from '../../ui/Button';
 
 function CustomerHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,12 +11,9 @@ function CustomerHeader() {
         <h2 className='mb-2 font-semibold text-heading text-2xl'>مشتریان</h2>
         <p className='text-muted text-sm'>مدیریت اطلاعات مشتریان کارخانه</p>
       </div>
-      <button
-        className='flex justify-center items-center bg-primary hover:bg-blue-700 px-4 rounded-lg h-10 text-white transition-colors duration-150 cursor-pointer'
-        onClick={() => setIsModalOpen(true)}
-      >
+      <Button variant='primary' onClick={() => setIsModalOpen(true)}>
         + مشتری جدید
-      </button>
+      </Button>
       <Modal isOpen={isModalOpen} handleClose={() => setIsModalOpen(false)} className='max-w-md'>
         <h3 className='mb-4 font-semibold text-heading'>افزودن مشتری</h3>
         <CreateCustomerForm />

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { LuX } from 'react-icons/lu';
+import Button from './Button';
 
 function Modal({ children, isOpen, handleClose, className }) {
   useEffect(() => {
@@ -25,13 +26,15 @@ function Modal({ children, isOpen, handleClose, className }) {
         className={`relative bg-white shadow-xl p-6 rounded-xl w-full ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button
+        <Button
           onClick={handleClose}
-          className='top-4 left-4 absolute hover:bg-slate-100 p-2 border border-slate-200 rounded-lg text-slate-500 transition-colors cursor-pointer'
+          size='sm'
+          variant='secondary'
+          className='top-4 left-4 absolute'
           aria-label='بستن پنجره'
         >
           <LuX size={20} />
-        </button>
+        </Button>
 
         {children}
       </div>
