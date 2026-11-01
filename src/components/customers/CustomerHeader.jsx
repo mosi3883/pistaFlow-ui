@@ -5,6 +5,9 @@ import Button from '../../ui/Button';
 
 function CustomerHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  function handleClose() {
+    setIsModalOpen(false);
+  }
   return (
     <header className='flex justify-between items-center mb-6'>
       <div>
@@ -14,9 +17,9 @@ function CustomerHeader() {
       <Button variant='primary' onClick={() => setIsModalOpen(true)}>
         + مشتری جدید
       </Button>
-      <Modal isOpen={isModalOpen} handleClose={() => setIsModalOpen(false)} className='max-w-md'>
+      <Modal isOpen={isModalOpen} handleClose={handleClose} className='max-w-md'>
         <h3 className='mb-4 font-semibold text-heading'>افزودن مشتری</h3>
-        <CreateCustomerForm />
+        <CreateCustomerForm handleClose={handleClose} />
       </Modal>
     </header>
   );

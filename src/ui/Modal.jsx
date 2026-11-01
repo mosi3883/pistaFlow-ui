@@ -11,9 +11,9 @@ function Modal({ children, isOpen, handleClose, className }) {
         handleClose();
       }
     }
-    document.documentElement.addEventListener('keyup', fn);
+    document.documentElement.addEventListener('keydown', fn);
     return function () {
-      document.documentElement.removeEventListener('keyup', fn);
+      document.documentElement.removeEventListener('keydown', fn);
     };
   }, [handleClose, isOpen]);
   if (!isOpen) return null;
