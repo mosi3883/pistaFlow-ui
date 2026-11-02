@@ -1,4 +1,4 @@
-function Button({ children, className = '', variant = 'primary', size = 'md', type = 'button', onClick }) {
+function Button({ children, className = '', variant = 'primary', size = 'md', type = 'button', onClick, ...props }) {
   const variants = {
     primary: 'bg-primary hover:bg-blue-700 text-white',
     secondary: 'bg-muted hover:bg-slate-800 text-white',
@@ -12,6 +12,7 @@ function Button({ children, className = '', variant = 'primary', size = 'md', ty
       onClick={onClick}
       type={type}
       className={`flex justify-center items-center transition-colors duration-150 cursor-pointer ${variants[variant]} ${sizes[size]} ${className}`}
+      {...props}
     >
       {children}
     </button>
