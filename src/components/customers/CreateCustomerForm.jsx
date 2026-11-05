@@ -1,21 +1,32 @@
 import { useForm } from 'react-hook-form';
 import Button from '../../ui/Button';
-import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';
 
-function CreateCustomerForm({ handleClose }) {
+function CreateCustomerForm({ handleClose, editMode = false, customer = {} }) {
+  console.log('editMode', editMode);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   function onSubmit(data) {
-    console.log(data);
-    // onsuccess show 'کاربر با موفقیت اضافه شد'
-    toast.success('کاربر با موفقیت اضافه شد');
-    // on success close the modal
-    handleClose();
-    // on error show 'خطا در ساخت کاربر'
-    //toast.error('خطا در ساخت کاربر');
+    if (editMode) {
+      console.log('new data', data);
+      // onsuccess show 'کاربر با موفقیت بروز شد'
+      toast('کاربر با موفقیت بروز شد');
+      // on success close the modal
+      handleClose();
+      // on error show 'خطا در ویرایش کاربر'
+      //toast('خطا در ویرایش کاربر');
+    } else {
+      console.log(data);
+      // onsuccess show 'کاربر با موفقیت اضافه شد'
+      toast('کاربر با موفقیت اضافه شد');
+      // on success close the modal
+      handleClose();
+      // on error show 'خطا در ساخت کاربر'
+      //toast('خطا در ساخت کاربر');
+    }
   }
 
   return (
@@ -36,6 +47,7 @@ function CreateCustomerForm({ handleClose }) {
             required: 'نام را وارد کنید!',
             type: String,
           })}
+          value={customer ? customer?.name : ''}
         />
       </div>
       <div className='flex flex-col gap-2 mb-6'>
@@ -50,6 +62,7 @@ function CreateCustomerForm({ handleClose }) {
           className='block px-3 py-3 border border-slate-200 focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full text-sm transition-colors'
           placeholder='شماره تلفن مشتری را وارد کنید'
           autoComplete='off'
+          value={customer ? customer?.phone : ''}
           {...register('phone', {
             required: 'تلفن را وارد کنید!',
             type: String,
@@ -65,7 +78,7 @@ function CreateCustomerForm({ handleClose }) {
           انصراف
         </Button>
         <Button type='submit' variant='primary'>
-          افزودن مشتری
+          {editMode ? 'ویرایش مشتری' : 'افزودن مشتری'}
         </Button>
       </div>
     </form>
