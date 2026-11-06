@@ -30,7 +30,7 @@ function DeliveriyForm({ editMode = false }) {
           <label htmlFor='customer' className='flex items-center gap-0.5 font-semibold text-base'>
             <LuUserRound size={18} />
             <span>انتخاب مشتری</span>
-            {errors.customer ? <span className='text-red-600 text-xs'>({errors.customer?.message})</span> : ''}
+            {errors.userId ? <span className='text-red-600 text-xs'>({errors.userId?.message})</span> : ''}
           </label>
 
           <select
