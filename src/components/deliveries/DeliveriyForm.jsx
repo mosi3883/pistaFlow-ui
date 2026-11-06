@@ -36,8 +36,11 @@ function DeliveriyForm({ editMode = false }) {
           <select
             id='customer'
             className='block px-3 py-2 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full text-sm transition-colors'
-            {...register('userId')}
+            {...register('userId', { required: 'مشتری رو انتخاب کنید' })}
           >
+            <option value='' selected>
+              مشتری رو انتخاب کنید
+            </option>
             <option value='1'>علی</option>
             <option value='2'>محمد</option>
           </select>
@@ -92,7 +95,7 @@ function DeliveriyForm({ editMode = false }) {
           <label htmlFor='gross' className='flex items-center gap-0.5 font-semibold text-base'>
             <LuScale size={18} />
             <span>وزن پر(kg)</span>
-            {errors.gross ? <span className='text-red-600 text-xs'>({errors.gross?.message})</span> : ''}
+            {errors.grossWeight ? <span className='text-red-600 text-xs'>({errors.grossWeight?.message})</span> : ''}
           </label>
 
           <input
@@ -110,7 +113,7 @@ function DeliveriyForm({ editMode = false }) {
           <label htmlFor='tare' className='flex items-center gap-0.5 font-semibold text-base'>
             <LuScale size={18} />
             <span> وزن خالی(kg)</span>
-            {errors.name ? <span className='text-red-600 text-xs'>({errors.name?.message})</span> : ''}
+            {errors.tareWeight ? <span className='text-red-600 text-xs'>({errors.tareWeight?.message})</span> : ''}
           </label>
 
           <input
