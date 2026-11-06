@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from '../../ui/Modal';
-import CreateCustomerForm from './CreateCustomerForm';
 import Button from '../../ui/Button';
+import CustomerForm from './CustomerForm';
 
 function CustomerHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +19,7 @@ function CustomerHeader() {
       </Button>
       <Modal isOpen={isModalOpen} handleClose={handleClose} className='max-w-md'>
         <h3 className='mb-4 font-semibold text-heading'>افزودن مشتری</h3>
-        <CreateCustomerForm handleClose={handleClose} />
+        <CustomerForm handleClose={handleClose} />
       </Modal>
     </header>
   );

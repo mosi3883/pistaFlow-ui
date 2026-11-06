@@ -1,4 +1,4 @@
-import { LuUsers, LuLayoutDashboard, LuPackage, LuWallet, LuChartNoAxesCombined } from 'react-icons/lu';
+import { LuUsers, LuLayoutDashboard, LuPackage, LuWallet, LuChartNoAxesCombined, LuTruck } from 'react-icons/lu';
 import { NavLink } from 'react-router';
 function Navbar() {
   return (
@@ -34,6 +34,7 @@ function Navbar() {
         <li>
           <NavLink
             to='/deliveries'
+            end
             className={({ isActive }) =>
               `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
                 isActive ? 'active' : 'hover:bg-slate-700  text-slate-300 hover:text-white'
@@ -42,6 +43,19 @@ function Navbar() {
           >
             <LuPackage size={20} />
             <span>ورودی های پسته</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to='/deliveries/new'
+            className={({ isActive }) =>
+              `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
+                isActive ? 'active' : 'hover:bg-slate-700  text-slate-300 hover:text-white'
+              }`
+            }
+          >
+            <LuTruck size={20} />
+            <span>افزودن ورودی پسته</span>
           </NavLink>
         </li>
         <li>

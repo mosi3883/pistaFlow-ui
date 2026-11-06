@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { LuPencil, LuTrash2 } from 'react-icons/lu';
 import Modal from '../../ui/Modal';
-import CreateCustomerForm from './CreateCustomerForm';
+
+import CustomerForm from './CustomerForm';
 
 const customers = [
   { id: 1, name: 'محمد احمدی', phone: '09000000001' },
@@ -78,7 +79,10 @@ function CustomerTable() {
         </thead>
         <tbody>
           {customers.map((customer) => (
-            <tr className='hover:bg-slate-50 transition-colors duration-150' key={customer.id}>
+            <tr
+              className='hover:bg-slate-50 border-border/30 border-b transition-colors duration-150'
+              key={customer.id}
+            >
               <td className='px-4 py-4 text-sm text-right'>{customer.name}</td>
               <td className='px-4 py-4 text-sm text-right' dir='ltr'>
                 {customer.phone}
@@ -98,7 +102,7 @@ function CustomerTable() {
         </tbody>
       </table>
       <Modal isOpen={isModalOpen} handleClose={handleClose} className='max-w-md'>
-        <CreateCustomerForm editMode customer={customer} handleClose={handleClose} />
+        <CustomerForm editMode customer={customer} handleClose={handleClose} />
       </Modal>
     </>
   );

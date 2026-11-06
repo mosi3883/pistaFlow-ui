@@ -1,6 +1,6 @@
 function Button({ children, className = '', variant = 'primary', size = 'md', type = 'button', onClick, ...props }) {
   const variants = {
-    primary: 'bg-primary hover:bg-blue-700 text-white',
+    primary: 'bg-primary hover:bg-sidebar text-white',
     secondary: 'bg-muted hover:bg-slate-800 text-white',
   };
   const sizes = {

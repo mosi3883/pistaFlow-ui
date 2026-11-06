@@ -6,7 +6,7 @@ function Header() {
       <h2 className='font-semibold text-sm'>داشبورد</h2>
       <Link
         to='/deliveries/new'
-        className='flex justify-center items-center bg-primary hover:bg-blue-700 px-4 rounded-lg h-10 text-white transition-colors duration-150'
+        className='flex justify-center items-center bg-primary hover:bg-sidebar px-4 rounded-lg h-10 text-white transition-colors duration-150'
       >
         + ثبت ورودی جدید
       </Link>

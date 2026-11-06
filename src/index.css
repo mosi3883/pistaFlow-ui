@@ -71,13 +71,26 @@
   font-display: swap;
 }
 
-@theme {
+/* @theme {
   --color-main: #f1f5f9;
   --color-sidebar: #1e293b;
   --color-heading: #0f172a;
   --color-muted: #64748b;
   --color-primary: #2563eb;
 
+  --font-vazir: 'Vazirmatn', sans-serif;
+} */
+
+@theme {
+  --color-main: #f3f5f4;
+  --color-sidebar: #063d2f;
+  --color-heading: #103b30;
+  --color-muted: #64748b;
+  --color-primary: #137a45;
+  --color-accent: #a4c91f;
+  --color-border: #d1d5d8;
+  --color-surface: #fff;
+  --color-net-weight: #e8f5ec;
   --font-vazir: 'Vazirmatn', sans-serif;
 }
 

@@ -7,7 +7,7 @@ function Dashboard() {
         <p className='mt-2 text-muted text-sm'>خلاصه وضعیت و فعالیت‌های کارخانه</p>
       </div>
       <div className='gap-4 grid grid-cols-3'>
-        <div className='flex items-start gap-4 bg-white p-6 border border-slate-200 rounded-xl'>
+        <div className='flex items-start gap-4 bg-white p-6 border border-border rounded-xl'>
           <div className='bg-blue-50 p-3 rounded-lg text-blue-600'>
             <LuPackageCheck size={24} />
           </div>
@@ -19,7 +19,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className='flex items-start gap-4 bg-white p-6 border border-slate-200 rounded-xl'>
+        <div className='flex items-start gap-4 bg-white p-6 border border-border rounded-xl'>
           <div className='bg-emerald-50 p-3 rounded-lg text-emerald-600'>
             <LuWeight size={24} />
           </div>
@@ -31,7 +31,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className='flex items-start gap-4 bg-white p-6 border border-slate-200 rounded-xl'>
+        <div className='flex items-start gap-4 bg-white p-6 border border-border rounded-xl'>
           <div className='bg-violet-50 p-3 rounded-lg text-violet-600'>
             <LuUsers size={24} />
           </div>
