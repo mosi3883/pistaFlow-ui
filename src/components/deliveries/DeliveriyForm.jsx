@@ -1,17 +1,23 @@
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { LuCalculator, LuCalendarDays, LuHash, LuLeaf, LuScale, LuUserRound } from 'react-icons/lu';
 import Button from '../../ui/Button';
 
-function DeliveriyForm(editMode = false) {
+function DeliveriyForm({ editMode = false }) {
   const {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm();
 
+  const gross = useWatch({ control, name: 'grossWeight' });
+  const tare = useWatch({ control, name: 'tareWeight' });
+  const hasBothWeights = gross !== undefined && gross !== '' && tare !== undefined && tare !== '';
+  const netWeight = hasBothWeights ? Number(gross) - Number(tare) : null;
   function onSubmit(data) {
-    console.log(data);
+    const newDelivery = { ...data, netWeight };
+    console.log(newDelivery);
   }
 
   function handleReset() {
@@ -19,22 +25,25 @@ function DeliveriyForm(editMode = false) {
   }
   return (
     <>
-      <h3 className='mb-4 font-semibold text-heading text-2xl'>افزودن ورودی</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='flex flex-col gap-2 mb-4'>
           <label htmlFor='customer' className='flex items-center gap-0.5 font-semibold text-base'>
             <LuUserRound size={18} />
-            <span>مشتری</span>
+            <span>انتخاب مشتری</span>
             {errors.customer ? <span className='text-red-600 text-xs'>({errors.customer?.message})</span> : ''}
           </label>
 
-          <select className='block px-3 py-2 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full text-sm transition-colors'>
+          <select
+            id='customer'
+            className='block px-3 py-2 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full text-sm transition-colors'
+            {...register('userId')}
+          >
             <option value='1'>علی</option>
             <option value='2'>محمد</option>
           </select>
         </div>
         <div className='flex flex-col gap-2 mb-4'>
-          <label htmlFor='date' className='flex items-center gap-0.5 font-semibold text-base'>
+          <label htmlFor='code' className='flex items-center gap-0.5 font-semibold text-base'>
             <LuHash size={18} />
             <span>کد(شماره محموله)</span>
             {errors.code ? <span className='text-red-600 text-xs'>({errors.code?.message})</span> : ''}
@@ -92,13 +101,13 @@ function DeliveriyForm(editMode = false) {
             className='block px-3 py-3 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full text-sm transition-colors'
             placeholder='وزن پر  را وارد کنید'
             autoComplete='off'
-            {...register('gross', {
+            {...register('grossWeight', {
               required: 'وزن پر را وارد کنید!',
             })}
           />
         </div>
         <div className='flex flex-col gap-2 mb-4'>
-          <label htmlFor='name' className='flex items-center gap-0.5 font-semibold text-base'>
+          <label htmlFor='tare' className='flex items-center gap-0.5 font-semibold text-base'>
             <LuScale size={18} />
             <span> وزن خالی(kg)</span>
             {errors.name ? <span className='text-red-600 text-xs'>({errors.name?.message})</span> : ''}
@@ -110,7 +119,7 @@ function DeliveriyForm(editMode = false) {
             className='block px-3 py-3 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full text-sm transition-colors'
             placeholder='وزن خالی را وارد کنید'
             autoComplete='off'
-            {...register('tare')}
+            {...register('tareWeight')}
           />
         </div>
         <div className='flex flex-row justify-between bg-net-weight mb-4 px-3 py-3'>
@@ -118,7 +127,9 @@ function DeliveriyForm(editMode = false) {
             <LuCalculator size={18} />
             <span> وزن خالص(kg)</span>
           </span>
-          <span className='text-2xl'>0</span>
+          <span className=''>
+            {netWeight === null ? 'وزن ها تکمیل نیست' : netWeight <= 0 ? 'ورودی وزن اشتباه' : `${netWeight}Kg`}
+          </span>
         </div>
         <div className='flex gap-2 mt-6'>
           <Button type='button' variant='secondary' onClick={handleReset}>
