@@ -1,7 +1,8 @@
 import { useForm, useWatch } from 'react-hook-form';
 import { LuCalculator, LuCalendarDays, LuHash, LuLeaf, LuScale, LuUserRound } from 'react-icons/lu';
 import Button from '../../ui/Button';
-import DatePicker from 'react-multi-date-picker';
+
+import { DayPicker, faIR } from '@daypicker/persian';
 
 function DeliveryForm({ editMode = false }) {
   const {
@@ -79,7 +80,7 @@ function DeliveryForm({ editMode = false }) {
             <span>تاریخ</span>
             {errors.date ? <span className='text-red-600 text-xs'>({errors.date?.message})</span> : ''}
           </label>
-          //
+          <DayPicker animate mode='single' footer={'Pick a day.'} locale={faIR} dir='rtl' />
         </div>
 
         <div className='flex flex-col gap-2 mb-4'>

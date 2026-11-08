@@ -1,7 +1,7 @@
 {
   "name": "pistaflow-ui",
   "private": true,
-  "version": "0.10.4",
+  "version": "0.10.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,12 +11,13 @@
     "update-deps": "npx npm-check-updates -u"
   },
   "dependencies": {
+    "@daypicker/persian": "^10.0.2",
+    "@daypicker/react": "^10.0.2",
     "@tailwindcss/vite": "^4.3.5",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-hook-form": "^7.91.0",
     "react-icons": "^5.7.0",
-    "react-multi-date-picker": "^4.5.2",
     "react-router": "^8.5.1",
     "react-toastify": "^11.2.0"
   },

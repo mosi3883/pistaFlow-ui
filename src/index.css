@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+
 @font-face {
   font-family: Vazirmatn;
   src: url('/fonts/vazir-matn/Vazirmatn-Thin.woff2') format('woff2');
