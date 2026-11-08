@@ -2,7 +2,7 @@ import { useForm, useWatch } from 'react-hook-form';
 import { LuCalculator, LuCalendarDays, LuHash, LuLeaf, LuScale, LuUserRound } from 'react-icons/lu';
 import Button from '../../ui/Button';
 
-function DeliveriyForm({ editMode = false }) {
+function DeliveryForm({ editMode = false }) {
   const {
     register,
     handleSubmit,
@@ -147,4 +147,4 @@ function DeliveriyForm({ editMode = false }) {
   );
 }
 
-export default DeliveriyForm;
+export default DeliveryForm;

@@ -3,6 +3,7 @@ import AppLayout from './ui/AppLayout';
 import Dashboard from './pages/Dashboard';
 import Customers from './pages/Customers';
 import CreateDelivery from './pages/CreateDelivery';
+import Deliveries from './pages/Deliveries';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Route element={<AppLayout />}>
         <Route index element={<Dashboard />} />
         <Route path='/customers' element={<Customers />} />
-        <Route path='/deliveries' element={<p>ورودی ها</p>} />
+        <Route path='/deliveries' element={<Deliveries />} />
         <Route path='/deliveries/new' element={<CreateDelivery />} />
         <Route path='/accounting' element={<p>حسابداری</p>} />
         <Route path='/reports' element={<p>گزارش ها</p>} />
