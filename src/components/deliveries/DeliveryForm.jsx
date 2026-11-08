@@ -1,6 +1,7 @@
 import { useForm, useWatch } from 'react-hook-form';
 import { LuCalculator, LuCalendarDays, LuHash, LuLeaf, LuScale, LuUserRound } from 'react-icons/lu';
 import Button from '../../ui/Button';
+import DatePicker from 'react-multi-date-picker';
 
 function DeliveryForm({ editMode = false }) {
   const {
@@ -38,9 +39,7 @@ function DeliveryForm({ editMode = false }) {
             className='block px-3 py-2 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full text-sm transition-colors'
             {...register('userId', { required: 'مشتری رو انتخاب کنید' })}
           >
-            <option value='' selected>
-              مشتری رو انتخاب کنید
-            </option>
+            <option value=''>مشتری رو انتخاب کنید</option>
             <option value='1'>علی</option>
             <option value='2'>محمد</option>
           </select>
@@ -80,15 +79,7 @@ function DeliveryForm({ editMode = false }) {
             <span>تاریخ</span>
             {errors.date ? <span className='text-red-600 text-xs'>({errors.date?.message})</span> : ''}
           </label>
-
-          <input
-            id='date'
-            type='date'
-            className='block px-3 py-3 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full text-sm transition-colors'
-            {...register('date', {
-              required: 'تاریخ را وارد کنید!',
-            })}
-          />
+          //
         </div>
 
         <div className='flex flex-col gap-2 mb-4'>

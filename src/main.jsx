@@ -4,11 +4,13 @@ import './index.css';
 import App from './App.jsx';
 import { BrowserRouter } from 'react-router';
 import { ToastContainer } from 'react-toastify';
+import DatePicker from 'react-multi-date-picker';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      {/* <App /> */}
+      <DatePicker calendar='persian' locale='fa' />
       <ToastContainer />
     </BrowserRouter>
   </StrictMode>,
