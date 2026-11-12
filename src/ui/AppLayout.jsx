@@ -1,7 +1,7 @@
-import { NavLink, Outlet } from 'react-router';
+import { Outlet } from 'react-router';
 import Header from './Header';
 import Navbar from './Navbar';
-import { LuSettings } from 'react-icons/lu';
+
 function AppLayout() {
   return (
     <div className='grid grid-cols-[240px_1fr] grid-rows-[64px_1fr] max-h-screen font-vazir'>
@@ -18,19 +18,6 @@ function AppLayout() {
           </div>
         </div>
         <Navbar />
-        <div className='mt-auto'>
-          <NavLink
-            to='/settings'
-            className={({ isActive }) =>
-              `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
-                isActive ? 'active' : 'hover:bg-slate-700  text-slate-300 hover:text-white'
-              }`
-            }
-          >
-            <LuSettings size={20} />
-            <span>تنظیمات</span>
-          </NavLink>
-        </div>
       </aside>
       <main className='col-start-2 col-end-3 row-start-2 row-end-3 p-6 overflow-auto'>
         <Outlet />

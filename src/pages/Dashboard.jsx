@@ -3,8 +3,8 @@ function Dashboard() {
   return (
     <>
       <div className='mb-6'>
-        <h1 className='font-semibold text-heading text-2xl'>نمای کلی</h1>
-        <p className='mt-2 text-muted text-sm'>خلاصه وضعیت و فعالیت‌های کارخانه</p>
+        <h1 className='font-semibold text-heading text-2xl'>داشبورد</h1>
+        <p className='mt-2 text-muted text-sm'>نمای کلی فعالیت کارخانه در فصل برداشت فعال</p>
       </div>
       <div className='gap-4 grid grid-cols-3'>
         <div className='flex items-start gap-4 bg-white p-6 border border-border rounded-xl'>
@@ -13,9 +13,9 @@ function Dashboard() {
           </div>
 
           <div>
-            <p className='text-muted text-base'>دریافتی‌های امروز</p>
-            <p className='mt-2 font-bold text-heading text-2xl'>۲۴ محموله</p>
-            <p className='mt-2 text-muted text-xs'>تعداد محموله‌های ثبت‌شده</p>
+            <p className='text-muted text-base'>وزن خالص ورودی امروز</p>
+            <p className='mt-2 font-bold text-heading text-2xl'>۲۴,۵۰۰ کیلوگرم</p>
+            <p className='mt-2 text-muted text-xs'>در تاریخ 12 آبان ۱۴۰۵ </p>
           </div>
         </div>
 
@@ -25,9 +25,9 @@ function Dashboard() {
           </div>
 
           <div>
-            <p className='text-muted text-base'>وزن خالص امروز</p>
-            <p className='mt-2 font-bold text-heading text-2xl'>۱۲٬۴۵۰ کیلوگرم</p>
-            <p className='mt-2 text-muted text-xs'>مجموع وزن خالص دریافتی‌ها</p>
+            <p className='text-muted text-base'>وزن خالص ورودی دیروز</p>
+            <p className='mt-2 font-bold text-heading text-2xl'>۱۹٬۸۰۰ کیلوگرم</p>
+            <p className='mt-2 text-muted text-xs'>در تاریخ ۱۱ آبان ۱۴۰۵ </p>
           </div>
         </div>
 
@@ -37,9 +37,9 @@ function Dashboard() {
           </div>
 
           <div>
-            <p className='text-muted text-base'>تعداد مشتریان</p>
-            <p className='mt-2 font-bold text-heading text-2xl'>۱۸۶ نفر</p>
-            <p className='mt-2 text-muted text-xs'>مشتریان ثبت‌شده در سیستم</p>
+            <p className='text-muted text-base'>مجموع ورودی فصل</p>
+            <p className='mt-2 font-bold text-heading text-2xl'>۲۵۴,۹۸۰ کیلوگرم</p>
+            <p className='mt-2 text-muted text-xs'>از ابتدای فصل تا امروز</p>
           </div>
         </div>
       </div>

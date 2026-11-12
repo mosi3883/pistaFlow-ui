@@ -1,4 +1,12 @@
-import { LuUsers, LuLayoutDashboard, LuPackage, LuWallet, LuChartNoAxesCombined, LuTruck } from 'react-icons/lu';
+import {
+  LuUsers,
+  LuLayoutDashboard,
+  LuPackage,
+  LuWallet,
+  LuChartNoAxesCombined,
+  LuTruck,
+  LuSettings,
+} from 'react-icons/lu';
 import { NavLink } from 'react-router';
 function Navbar() {
   return (
@@ -10,7 +18,7 @@ function Navbar() {
             end
             className={({ isActive }) =>
               `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
-                isActive ? 'active' : 'hover:bg-slate-700  text-slate-300 hover:text-white'
+                isActive ? 'active' : 'hover:bg-slate-700 text-slate-300 hover:text-white'
               }`
             }
           >
@@ -23,7 +31,7 @@ function Navbar() {
             to='/customers'
             className={({ isActive }) =>
               `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
-                isActive ? 'active' : 'hover:bg-slate-700  text-slate-300 hover:text-white'
+                isActive ? 'active' : 'hover:bg-slate-700 text-slate-300 hover:text-white'
               }`
             }
           >
@@ -37,7 +45,7 @@ function Navbar() {
             end
             className={({ isActive }) =>
               `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
-                isActive ? 'active' : 'hover:bg-slate-700  text-slate-300 hover:text-white'
+                isActive ? 'active' : 'hover:bg-slate-700 text-slate-300 hover:text-white'
               }`
             }
           >
@@ -50,7 +58,7 @@ function Navbar() {
             to='/deliveries/new'
             className={({ isActive }) =>
               `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
-                isActive ? 'active' : 'hover:bg-slate-700  text-slate-300 hover:text-white'
+                isActive ? 'active' : 'hover:bg-slate-700 text-slate-300 hover:text-white'
               }`
             }
           >
@@ -63,7 +71,7 @@ function Navbar() {
             to='/accounting'
             className={({ isActive }) =>
               `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
-                isActive ? 'active' : 'hover:bg-slate-700  text-slate-300 hover:text-white'
+                isActive ? 'active' : 'hover:bg-slate-700 text-slate-300 hover:text-white'
               }`
             }
           >
@@ -76,12 +84,25 @@ function Navbar() {
             to='/reports'
             className={({ isActive }) =>
               `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
-                isActive ? 'active' : 'hover:bg-slate-700  text-slate-300 hover:text-white'
+                isActive ? 'active' : 'hover:bg-slate-700 text-slate-300 hover:text-white'
               }`
             }
           >
             <LuChartNoAxesCombined size={20} />
             <span>گزارش‌ها</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to='/settings'
+            className={({ isActive }) =>
+              `flex h-11 items-center gap-3 px-3  rounded-lg text-sm transition-colors duration-150 ${
+                isActive ? 'active' : 'hover:bg-slate-700 text-slate-300 hover:text-white'
+              }`
+            }
+          >
+            <LuSettings size={20} />
+            <span>تنظیمات</span>
           </NavLink>
         </li>
       </ul>
