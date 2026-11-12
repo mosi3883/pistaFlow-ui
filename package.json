@@ -1,7 +1,7 @@
 {
   "name": "pistaflow-ui",
   "private": true,
-  "version": "0.11.0",
+  "version": "0.11.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -18,7 +18,8 @@
     "react-icons": "^5.7.0",
     "react-multi-date-picker": "^4.5.2",
     "react-router": "^8.5.1",
-    "react-toastify": "^11.2.0"
+    "react-toastify": "^11.2.0",
+    "recharts": "^3.10.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
