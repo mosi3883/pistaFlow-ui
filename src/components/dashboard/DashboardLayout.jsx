@@ -1,4 +1,4 @@
-import { LuPackageCheck, LuUsers, LuWeight } from 'react-icons/lu';
+import { LuChartLine, LuPackageCheck, LuUsers, LuWeight } from 'react-icons/lu';
 import DashboardDeliveryChart from './DashboardDeliveryChart';
 
 function DashboardLayout() {
@@ -41,9 +41,18 @@ function DashboardLayout() {
           </div>
         </div>
       </div>
-      <div className='grid grid-cols-[2fr_1fr] mt-6'>
-        <div className=' bg-white p-6 border border-border rounded-xl flex items-center justify-center'>
-          <DashboardDeliveryChart />
+      <div className='grid grid-cols-[2fr_1fr] mt-6 gap-8'>
+        <div className=' bg-white p-6 border border-border rounded-xl '>
+          <div className='flex items-center gap-1'>
+            <LuChartLine size={32} />
+            <div>
+              <h2 className='text-xl text-heading font-bold'>روند ورودی روزانه</h2>
+              <p className='text-sm text-muted'>وزن خالص ورودی به تفکیک روز</p>
+            </div>
+          </div>
+          <div className='flex items-center justify-center'>
+            <DashboardDeliveryChart />
+          </div>
         </div>
         <div>table</div>
       </div>

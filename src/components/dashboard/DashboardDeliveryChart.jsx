@@ -56,9 +56,9 @@ function DashboardDeliveryChart() {
       }}
     >
       <CartesianGrid strokeDasharray='5 5' />
-      <Line type='monotone' dataKey='uv' strokeWidth={2} name='My data series name' />
+      <Line type='monotone' dataKey='uv' strokeWidth={2} name='ورودی روز' />
       <XAxis dataKey='name' />
-      <YAxis width='auto' label={{ value: 'UV', position: 'insideLeft', angle: -90 }} />
+      <YAxis width='auto' label={{ value: 'وزن ورودی', position: 'insideLeft', angle: -90 }} />
       <Legend position='insideBottomRight' />
       <Tooltip />
       {/* <RechartsDevtools /> */}

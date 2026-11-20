@@ -20,7 +20,9 @@ function AppLayout() {
         <Navbar />
       </aside>
       <main className='col-start-2 col-end-3 row-start-2 row-end-3 p-6 overflow-auto'>
-        <Outlet />
+        <div className='max-w-7xl mx-auto'>
+          <Outlet />
+        </div>
       </main>
     </div>
   );
