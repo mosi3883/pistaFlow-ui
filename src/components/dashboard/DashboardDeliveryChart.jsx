@@ -5,39 +5,43 @@ import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'r
 const data = [
   {
     name: 'آبان ۴',
-    uv: 27562,
-    pv: 2400,
-    amt: 2400,
+    weight: 27562,
   },
   {
     name: 'آبان ۵',
-    uv: 24362,
-    pv: 4567,
-    amt: 2400,
+    weight: 24362,
   },
   {
     name: 'آبان ۶',
-    uv: 12750,
-    pv: 1398,
-    amt: 2400,
+    weight: 12750,
   },
   {
     name: 'آبان ۷',
-    uv: 34152,
-    pv: 9800,
-    amt: 2400,
+    weight: 34152,
   },
   {
     name: 'آبان ۸',
-    uv: 30856,
-    pv: 3908,
-    amt: 2400,
+    weight: 30856,
   },
   {
     name: 'آبان ۹',
-    uv: 24850,
-    pv: 4800,
-    amt: 2400,
+    weight: 24850,
+  },
+  {
+    name: 'آبان ۱۰',
+    weight: 12750,
+  },
+  {
+    name: 'آبان ۱۱',
+    weight: 34152,
+  },
+  {
+    name: 'آبان ۱۲',
+    weight: 30856,
+  },
+  {
+    name: 'آبان ۱۳',
+    weight: 24850,
   },
 ];
 
@@ -45,7 +49,7 @@ const data = [
 function DashboardDeliveryChart() {
   return (
     <LineChart
-      style={{ width: '100%', aspectRatio: 1.618, maxWidth: 600 }}
+      style={{ width: '100%', aspectRatio: 3, maxWidth: 768 }}
       responsive
       data={data}
       margin={{
@@ -56,7 +60,7 @@ function DashboardDeliveryChart() {
       }}
     >
       <CartesianGrid strokeDasharray='5 5' />
-      <Line type='monotone' dataKey='uv' strokeWidth={2} name='ورودی روز' />
+      <Line type='monotone' dataKey='weight' strokeWidth={2} name='ورودی روز' />
       <XAxis dataKey='name' />
       <YAxis width='auto' label={{ value: 'وزن ورودی', position: 'insideLeft', angle: -90 }} />
       <Legend position='insideBottomRight' />
