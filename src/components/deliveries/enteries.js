@@ -36,7 +36,7 @@ const entries = Array.from({ length: 200 }, (_, index) => {
     customerName: customers[userId - 1],
     code: 100 + ((id * 47) % 901),
     pistaType: pistaTypes[index % 4],
-    date: `1405/07/${String((index % 30) + 1).padStart(2, '0')}`,
+    date: `2026/09/${String((index % 30) + 1).padStart(2, '0')}`,
     grossWeight,
     tareWeight,
     netWeight: tareWeight === null ? null : grossWeight - tareWeight,

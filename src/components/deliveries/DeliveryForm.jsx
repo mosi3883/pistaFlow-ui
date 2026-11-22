@@ -5,7 +5,7 @@ import DatePicker from 'react-multi-date-picker';
 import persian from 'react-date-object/calendars/persian';
 import persian_fa from 'react-date-object/locales/persian_fa';
 import 'react-multi-date-picker/styles/colors/green.css';
-//import 'react-multi-date-picker/styles/backgrounds/bg-dark.css';
+
 function DeliveryForm({ editMode = false }) {
   const {
     register,
@@ -17,8 +17,10 @@ function DeliveryForm({ editMode = false }) {
 
   const gross = useWatch({ control, name: 'grossWeight' });
   const tare = useWatch({ control, name: 'tareWeight' });
+
   const hasBothWeights = gross !== undefined && gross !== '' && tare !== undefined && tare !== '';
   const netWeight = hasBothWeights ? Number(gross) - Number(tare) : null;
+  console.log(gross, tare, netWeight);
   function onSubmit(data) {
     const newDelivery = { ...data, netWeight };
     console.log(newDelivery);
@@ -27,6 +29,7 @@ function DeliveryForm({ editMode = false }) {
   function handleReset() {
     reset();
   }
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -143,13 +146,9 @@ function DeliveryForm({ editMode = false }) {
               type='text'
               disabled
               className='block disabled:bg-slate-200 px-3 py-3 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full h-10 text-sm transition-colors disabled:cursor-not-allowed'
-              defaultValue={
-                netWeight === null ? 'وزن ها تکمیل نیست' : netWeight <= 0 ? 'ورودی وزن اشتباه' : `${netWeight}Kg`
-              }
+              value={netWeight === null ? 'وزن ها تکمیل نیست' : netWeight <= 0 ? 'ورودی وزن اشتباه' : `${netWeight}Kg`}
+              onChange={() => {}}
             />
-          </div>
-          <div className='flex flex-row justify-between bg-net-weight px-3 py-3'>
-            <span className=''></span>
           </div>
         </div>
         <div className='flex gap-2 mt-6'>

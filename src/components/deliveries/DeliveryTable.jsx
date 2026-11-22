@@ -1,7 +1,8 @@
 import { LuPencil, LuTrash2 } from 'react-icons/lu';
 
 import deliveries from './enteries';
-function DeliveryTable() {
+function DeliveryTable({ latest = false }) {
+  let allDeliveries = latest ? deliveries.slice(-5) : deliveries;
   return (
     <>
       <table className='w-full'>
@@ -14,32 +15,40 @@ function DeliveryTable() {
             <th className='px-4 py-3 text-xs text-right'>وزن پر</th>
             <th className='px-4 py-3 text-xs text-right'>وزن خالی</th>
             <th className='px-4 py-3 text-xs text-right'>وزن خالص</th>
-            <th className='px-4 py-3 text-xs text-center'>عملیات</th>
+            {latest ? '' : <th className='px-4 py-3 text-xs text-center'>عملیات</th>}
           </tr>
         </thead>
         <tbody>
-          {deliveries.map((delivery) => (
+          {allDeliveries.map((delivery) => (
             <tr
               className='hover:bg-slate-50 border-border/30 border-b transition-colors duration-150'
               key={delivery.id}
             >
-              <td className='px-4 py-4 text-sm text-right'>{delivery.date}</td>
+              <td className='px-4 py-4 text-sm text-right'>
+                {Intl.DateTimeFormat('fa-IR').format(new Date(delivery.date))}
+              </td>
               <td className='px-4 py-4 text-sm text-right'>{delivery.code}</td>
               <td className='px-4 py-4 text-sm text-right'>{delivery.customerName}</td>
               <td className='px-4 py-4 text-sm text-right'>{delivery.pistaType}</td>
-              <td className='px-4 py-4 text-sm text-right'>{delivery.grossWeight}</td>
-              <td className='px-4 py-4 text-sm text-right'>{delivery.tareWeight}</td>
-              <td className='px-4 py-4 text-sm text-right'>{delivery.netWeight}</td>
               <td className='px-4 py-4 text-sm text-right'>
-                <div className='flex justify-center gap-3'>
-                  <button className='p-2 cursor-pointer'>
-                    <LuPencil size={20} />
-                  </button>
-                  <button className='p-2 cursor-pointer'>
-                    <LuTrash2 size={20} className='text-red-700 hover:text-red-500 transition-colors duration-150' />
-                  </button>
-                </div>
+                {Intl.NumberFormat('fa-IR').format(delivery.grossWeight)}
               </td>
+              <td className='px-4 py-4 text-sm text-right'>{Intl.NumberFormat('fa-IR').format(delivery.tareWeight)}</td>
+              <td className='px-4 py-4 text-sm text-right'>{Intl.NumberFormat('fa-IR').format(delivery.netWeight)}</td>
+              {latest ? (
+                ''
+              ) : (
+                <td className='px-4 py-4 text-sm text-right'>
+                  <div className='flex justify-center gap-3'>
+                    <button className='p-2 cursor-pointer'>
+                      <LuPencil size={20} />
+                    </button>
+                    <button className='p-2 cursor-pointer'>
+                      <LuTrash2 size={20} className='text-red-700 hover:text-red-500 transition-colors duration-150' />
+                    </button>
+                  </div>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

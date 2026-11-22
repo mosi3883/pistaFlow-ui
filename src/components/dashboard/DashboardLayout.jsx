@@ -1,11 +1,12 @@
-import { LuAward, LuChartLine, LuPackageCheck, LuUsers, LuWeight } from 'react-icons/lu';
+import { LuAnvil, LuAward, LuChartLine, LuPackageCheck, LuUsers, LuWeight } from 'react-icons/lu';
 import DashboardDeliveryChart from './DashboardDeliveryChart';
+import DeliveryTable from '../deliveries/DeliveryTable';
 
 function DashboardLayout() {
   return (
     <>
       {/* INFO BOXES */}
-      <div className='gap-4 grid grid-cols-3'>
+      <div className='gap-4 grid grid-cols-3 mb-6'>
         <div className='flex items-start gap-4 bg-white p-6 border border-border rounded-xl'>
           <div className='bg-blue-50 p-3 rounded-lg text-blue-600'>
             <LuPackageCheck size={24} />
@@ -42,7 +43,7 @@ function DashboardLayout() {
           </div>
         </div>
       </div>
-      <div className='grid grid-cols-[2fr_1fr] mt-6 gap-8'>
+      <div className='grid grid-cols-[2fr_1fr] gap-8 mb-6'>
         {/* Chart */}
         <div className=' bg-white p-6 border border-border rounded-xl '>
           <div className='flex items-center gap-2 mb-2'>
@@ -57,7 +58,7 @@ function DashboardLayout() {
           </div>
         </div>
         {/* Most Income */}
-        <div className=' bg-white p-6 border border-border rounded-xl '>
+        <div className='bg-white p-6 border border-border rounded-xl'>
           <div className='flex items-center gap-2 mb-6'>
             <LuAward size={32} className='text-primary' />
             <div>
@@ -116,6 +117,17 @@ function DashboardLayout() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className='bg-white p-6 border border-border rounded-xl'>
+        <div className='flex items-center gap-2 mb-6'>
+          <LuAnvil size={32} className='text-primary' />
+          <div>
+            <h2 className='text-xl text-heading font-bold'>آخرین ورودی‌های ثبت شده</h2>
+          </div>
+        </div>
+        <div>
+          <DeliveryTable latest />
         </div>
       </div>
     </>
