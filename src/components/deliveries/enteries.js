@@ -20,23 +20,26 @@ const customers = [
   'وحید عباسی',
   'حسن زمانی',
 ];
+const startDate = new Date(2026, 8, 23);
+const endDate = new Date(2026, 10, 22);
 
 const pistaTypes = ['فندقی', 'اکبری', 'احمدآقایی', 'کله‌قوچی'];
 
 const entries = Array.from({ length: 200 }, (_, index) => {
+  const randomDate = new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
   const id = index + 1;
   const userId = (index % 20) + 1;
   const grossWeight = 5200 + ((id * 137) % 3100);
 
   const tareWeight = id % 9 === 0 || id % 17 === 0 ? null : 1800 + ((id * 71) % 1100);
-
+  const date = randomDate.toISOString().split('T')[0];
   return {
     id,
     userId,
     customerName: customers[userId - 1],
     code: 100 + ((id * 47) % 901),
     pistaType: pistaTypes[index % 4],
-    date: `2026/09/${String((index % 30) + 1).padStart(2, '0')}`,
+    date,
     grossWeight,
     tareWeight,
     netWeight: tareWeight === null ? null : grossWeight - tareWeight,

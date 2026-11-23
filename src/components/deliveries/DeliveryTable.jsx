@@ -2,7 +2,7 @@ import { LuPencil, LuTrash2 } from 'react-icons/lu';
 
 import deliveries from './enteries';
 function DeliveryTable({ latest = false }) {
-  let allDeliveries = latest ? deliveries.slice(-5) : deliveries;
+  let allDeliveries = latest ? deliveries.sort((a, b) => new Date(a.date) - new Date(b.date)).slice(-5) : deliveries;
   return (
     <>
       <table className='w-full'>
@@ -12,8 +12,14 @@ function DeliveryTable({ latest = false }) {
             <th className='px-4 py-3 text-xs text-right'>کد</th>
             <th className='px-4 py-3 text-xs text-right'>نام مشتری</th>
             <th className='px-4 py-3 text-xs text-right'>نوع پسته</th>
-            <th className='px-4 py-3 text-xs text-right'>وزن پر</th>
-            <th className='px-4 py-3 text-xs text-right'>وزن خالی</th>
+            {latest ? (
+              ''
+            ) : (
+              <>
+                <th className='px-4 py-3 text-xs text-right'>وزن پر</th>
+                <th className='px-4 py-3 text-xs text-right'>وزن خالی</th>
+              </>
+            )}
             <th className='px-4 py-3 text-xs text-right'>وزن خالص</th>
             {latest ? '' : <th className='px-4 py-3 text-xs text-center'>عملیات</th>}
           </tr>
@@ -30,10 +36,18 @@ function DeliveryTable({ latest = false }) {
               <td className='px-4 py-4 text-sm text-right'>{delivery.code}</td>
               <td className='px-4 py-4 text-sm text-right'>{delivery.customerName}</td>
               <td className='px-4 py-4 text-sm text-right'>{delivery.pistaType}</td>
-              <td className='px-4 py-4 text-sm text-right'>
-                {Intl.NumberFormat('fa-IR').format(delivery.grossWeight)}
-              </td>
-              <td className='px-4 py-4 text-sm text-right'>{Intl.NumberFormat('fa-IR').format(delivery.tareWeight)}</td>
+              {latest ? (
+                ''
+              ) : (
+                <>
+                  <td className='px-4 py-4 text-sm text-right'>
+                    {Intl.NumberFormat('fa-IR').format(delivery.grossWeight)}
+                  </td>
+                  <td className='px-4 py-4 text-sm text-right'>
+                    {Intl.NumberFormat('fa-IR').format(delivery.tareWeight)}
+                  </td>
+                </>
+              )}
               <td className='px-4 py-4 text-sm text-right'>{Intl.NumberFormat('fa-IR').format(delivery.netWeight)}</td>
               {latest ? (
                 ''

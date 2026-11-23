@@ -131,6 +131,7 @@ function DeliveryForm({ editMode = false }) {
               placeholder='وزن خالی را وارد کنید'
               autoComplete='off'
               {...register('tareWeight')}
+              defaultValue={0}
             />
           </div>
           <div className='flex flex-col gap-2'>
