@@ -20,8 +20,8 @@ const customers = [
   'وحید عباسی',
   'حسن زمانی',
 ];
-const startDate = new Date(2026, 7, 23);
-const endDate = new Date(2026, 9, 22);
+const startDate = new Date(2026, 10, 23);
+const endDate = new Date(2026, 12, 22);
 
 const pistaTypes = ['فندقی', 'اکبری', 'احمدآقایی', 'کله‌قوچی'];
 
@@ -45,4 +45,5 @@ const entries = Array.from({ length: 200 }, (_, index) => {
     netWeight: tareWeight === null ? null : grossWeight - tareWeight,
   };
 });
+console.log(entries);
 export default entries;

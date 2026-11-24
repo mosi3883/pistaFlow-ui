@@ -1,39 +1,81 @@
-import { LuAnvil, LuAward, LuChartLine, LuPackageCheck, LuUsers, LuWeight } from 'react-icons/lu';
+import {
+  LuAnvil,
+  // LuArrowDown,
+  LuArrowUp,
+  LuAward,
+  LuCalendarDays,
+  LuChartLine,
+  LuPackageCheck,
+  LuWeight,
+} from 'react-icons/lu';
 import DashboardDeliveryChart from './DashboardDeliveryChart';
 import DeliveryTable from '../deliveries/DeliveryTable';
-
+import entries from '../deliveries/enteries';
 function DashboardLayout() {
+  const today = new Date();
+
+  const todayString = [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, '0'),
+    String(today.getDate()).padStart(2, '0'),
+  ].join('-');
+  const yesterdayString = [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, '0'),
+    String(today.getDate() - 1).padStart(2, '0'),
+  ].join('-');
+  const todayEntries = entries.filter((entry) => entry.date === todayString);
+  const todayWeight = todayEntries.reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
+  const yesterdayEntries = entries.filter((entry) => entry.date === yesterdayString);
+  const yesterdayWeight = yesterdayEntries.reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
   return (
     <>
       {/* INFO BOXES */}
       <div className='gap-4 grid grid-cols-3 mb-6'>
-        <div className='flex items-start gap-4 bg-white p-6 border border-border rounded-xl'>
+        <div className='grid grid-cols-[auto_1fr] items-start gap-4 bg-white p-6 border border-border rounded-xl'>
           <div className='bg-blue-50 p-3 rounded-lg text-blue-600'>
-            <LuPackageCheck size={24} />
-          </div>
-
-          <div>
-            <p className='text-muted text-base'>وزن خالص ورودی امروز</p>
-            <p className='mt-2 font-bold text-heading text-2xl'>۲۴,۵۰۰ کیلوگرم</p>
-            <p className='mt-2 text-muted text-xs'>در تاریخ 12 آبان ۱۴۰۵ </p>
-          </div>
-        </div>
-
-        <div className='flex items-start gap-4 bg-white p-6 border border-border rounded-xl'>
-          <div className='bg-emerald-50 p-3 rounded-lg text-emerald-600'>
             <LuWeight size={24} />
           </div>
 
           <div>
-            <p className='text-muted text-base'>وزن خالص ورودی دیروز</p>
-            <p className='mt-2 font-bold text-heading text-2xl'>۱۹٬۸۰۰ کیلوگرم</p>
-            <p className='mt-2 text-muted text-xs'>در تاریخ ۱۱ آبان ۱۴۰۵ </p>
+            <p className='text-muted text-base'>وزن خالص ورودی امروز</p>
+            <div className='mt-2  flex items-center justify-between'>
+              <div className='font-bold text-heading text-2xl'>
+                {Intl.NumberFormat('fa-IR').format(todayWeight)} کیلوگرم
+              </div>
+              <div className=' flex flex-col justify-center items-center text-xs'>
+                <div className='text-green-700 flex items-center'>
+                  ۲۳.۷% <LuArrowUp />
+                  {/* <LuArrowDown /> */}
+                </div>
+                <div>نسبت به دیروز</div>
+              </div>
+            </div>
+            <p className='mt-2 text-muted text-xs'>
+              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(today)}
+            </p>
           </div>
         </div>
 
-        <div className='flex items-start gap-4 bg-white p-6 border border-border rounded-xl'>
+        <div className='grid grid-cols-[auto_1fr] items-start gap-4 bg-white p-6 border border-border rounded-xl'>
+          <div className='bg-emerald-50 p-3 rounded-lg text-emerald-600'>
+            <LuCalendarDays size={24} />
+          </div>
+
+          <div>
+            <p className='text-muted text-base'>وزن خالص ورودی دیروز</p>
+            <div className='font-bold text-heading text-2xl'>
+              {Intl.NumberFormat('fa-IR').format(yesterdayWeight)} کیلوگرم
+            </div>
+            <p className='mt-2 text-muted text-xs'>
+              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(today)}
+            </p>
+          </div>
+        </div>
+
+        <div className='grid grid-cols-[auto_1fr] items-start gap-4 bg-white p-6 border border-border rounded-xl'>
           <div className='bg-violet-50 p-3 rounded-lg text-violet-600'>
-            <LuUsers size={24} />
+            <LuPackageCheck size={24} />
           </div>
 
           <div>
