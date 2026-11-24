@@ -20,8 +20,8 @@ const customers = [
   'وحید عباسی',
   'حسن زمانی',
 ];
-const startDate = new Date(2026, 8, 23);
-const endDate = new Date(2026, 10, 22);
+const startDate = new Date(2026, 7, 23);
+const endDate = new Date(2026, 9, 22);
 
 const pistaTypes = ['فندقی', 'اکبری', 'احمدآقایی', 'کله‌قوچی'];
 

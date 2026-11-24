@@ -2,7 +2,12 @@ import { LuPencil, LuTrash2 } from 'react-icons/lu';
 
 import deliveries from './enteries';
 function DeliveryTable({ latest = false }) {
-  let allDeliveries = latest ? deliveries.sort((a, b) => new Date(a.date) - new Date(b.date)).slice(-5) : deliveries;
+  let allDeliveries = latest
+    ? deliveries
+        .slice()
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 5)
+    : deliveries;
   return (
     <>
       <table className='w-full'>
@@ -44,11 +49,14 @@ function DeliveryTable({ latest = false }) {
                     {Intl.NumberFormat('fa-IR').format(delivery.grossWeight)}
                   </td>
                   <td className='px-4 py-4 text-sm text-right'>
-                    {Intl.NumberFormat('fa-IR').format(delivery.tareWeight)}
+                    {delivery.tareWeight ? Intl.NumberFormat('fa-IR').format(delivery.tareWeight) : '-'}
                   </td>
                 </>
               )}
-              <td className='px-4 py-4 text-sm text-right'>{Intl.NumberFormat('fa-IR').format(delivery.netWeight)}</td>
+              <td className='px-4 py-4 text-sm text-right'>
+                {' '}
+                {delivery.tareWeight ? Intl.NumberFormat('fa-IR').format(delivery.netWeight) : '-'}
+              </td>
               {latest ? (
                 ''
               ) : (
