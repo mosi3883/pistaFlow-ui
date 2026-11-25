@@ -1,6 +1,6 @@
 import { LuPencil, LuTrash2 } from 'react-icons/lu';
 
-import deliveries from './enteries';
+import deliveries from './entries';
 function DeliveryTable({ latest = false }) {
   let allDeliveries = latest
     ? deliveries

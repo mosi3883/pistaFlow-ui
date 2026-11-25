@@ -10,24 +10,23 @@ import {
 } from 'react-icons/lu';
 import DashboardDeliveryChart from './DashboardDeliveryChart';
 import DeliveryTable from '../deliveries/DeliveryTable';
-import entries from '../deliveries/enteries';
-function DashboardLayout() {
-  const today = new Date();
 
-  const todayString = [
-    today.getFullYear(),
-    String(today.getMonth() + 1).padStart(2, '0'),
-    String(today.getDate()).padStart(2, '0'),
-  ].join('-');
-  const yesterdayString = [
-    today.getFullYear(),
-    String(today.getMonth() + 1).padStart(2, '0'),
-    String(today.getDate() - 1).padStart(2, '0'),
-  ].join('-');
-  const todayEntries = entries.filter((entry) => entry.date === todayString);
-  const todayWeight = todayEntries.reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
-  const yesterdayEntries = entries.filter((entry) => entry.date === yesterdayString);
-  const yesterdayWeight = yesterdayEntries.reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
+import {
+  customerWeights,
+  getEntriesByDate,
+  sumTotalEntriesWeight,
+  today,
+  todayString,
+  yesterdayString,
+} from '../../utils/utilities';
+function DashboardLayout() {
+  const todayWeight = getEntriesByDate(todayString).reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
+  const yesterdayWeight = getEntriesByDate(yesterdayString).reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
+  const topFiveCustomers = customerWeights
+    .slice()
+    .sort((a, b) => b.totalWeight - a.totalWeight)
+    .slice(0, 5);
+
   return (
     <>
       {/* INFO BOXES */}
@@ -68,7 +67,7 @@ function DashboardLayout() {
               {Intl.NumberFormat('fa-IR').format(yesterdayWeight)} کیلوگرم
             </div>
             <p className='mt-2 text-muted text-xs'>
-              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(today)}
+              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(today) /* ! NEED FIX */}
             </p>
           </div>
         </div>
@@ -80,7 +79,9 @@ function DashboardLayout() {
 
           <div>
             <p className='text-muted text-base'>مجموع ورودی فصل</p>
-            <p className='mt-2 font-bold text-heading text-2xl'>۲۵۴,۹۸۰ کیلوگرم</p>
+            <p className='mt-2 font-bold text-heading text-2xl'>
+              {Intl.NumberFormat('fa-IR').format(sumTotalEntriesWeight)} کیلوگرم
+            </p>
             <p className='mt-2 text-muted text-xs'>از ابتدای فصل تا امروز</p>
           </div>
         </div>
@@ -108,7 +109,22 @@ function DashboardLayout() {
             </div>
           </div>
           <div className='flex flex-col gap-2'>
-            <div className='bg-gray-50 rounded-md overflow-hidden px-2 py-1 text-black flex w-full gap-2'>
+            {topFiveCustomers.map((customer, index) => (
+              <div
+                className='bg-gray-50 rounded-md overflow-hidden px-2 py-1 text-black flex w-full gap-2'
+                key={customer.userId}
+              >
+                <div className='flex justify-center items-center bg-primary text-white w-8 rounded-lg'>
+                  {new Intl.NumberFormat('fa-IR').format(index + 1)}
+                </div>
+                <div className='p-1'>{customer.customerName}</div>
+                <div className='p-1 mr-auto flex gap-1.5'>
+                  <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(customer.totalWeight)}</span>
+                  <span>کیلوگرم</span>
+                </div>
+              </div>
+            ))}
+            {/* <div className='bg-gray-50 rounded-md overflow-hidden px-2 py-1 text-black flex w-full gap-2'>
               <div className='flex justify-center items-center bg-primary text-white w-8 rounded-lg'>
                 {new Intl.NumberFormat('fa-IR').format(1)}
               </div>
@@ -157,7 +173,7 @@ function DashboardLayout() {
                 <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(69400)}</span>
                 <span>کیلوگرم</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
