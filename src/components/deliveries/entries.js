@@ -20,13 +20,13 @@
 //   'وحید عباسی',
 //   'حسن زمانی',
 // ];
-// const startDate = new date(2026, 10, 23);
-// const endDate = new date(2026, 12, 22);
+// const startDate = new Date(2026, 10, 23);
+// const endDate = new Date(2026, 12, 22);
 
 // const pistaTypes = ['فندقی', 'اکبری', 'احمدآقایی', 'کله‌قوچی'];
 
 // const entries = Array.from({ length: 200 }, (_, index) => {
-//   const randomDate = new date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
+//   const randomDate = new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
 //   const id = index + 1;
 //   const userId = (index % 20) + 1;
 //   const grossWeight = 5200 + ((id * 137) % 3100);

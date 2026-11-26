@@ -14,7 +14,7 @@ export const todayDateString = formatDateToString(todayDate);
 export const yesterdayDateString = formatDateToString(yesterdayDate);
 
 export function getDeliveriesByDate(dateString = todayDateString) {
-  return entries.filter((delivery) => delivery.dateString === dateString);
+  return entries.filter((delivery) => delivery.date === dateString);
 }
 
 // export function getCustomerEntries(userId) {
