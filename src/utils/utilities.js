@@ -13,8 +13,8 @@ function formatDateToString(date) {
 export const todayDateString = formatDateToString(todayDate);
 export const yesterdayDateString = formatDateToString(yesterdayDate);
 
-export function getDeliveriesByDate(date = todayDateString) {
-  return entries.filter((entry) => entry.date === date);
+export function export function getDeliveriesByDate(dateString = todayDateString) {
+  return entries.filter((delivery) => delivery.date === date);
 }
 
 // export function getCustomerEntries(userId) {
@@ -24,22 +24,22 @@ export function getDeliveriesByDate(date = todayDateString) {
 export const totalNetWeight = entries.reduce((acc, delivery) => acc + (delivery.netWeight ?? 0), 0);
 // gets date strings and returns sum of weights in that date
 export function getTotalNetWeightByDate(dateString) {
-  return getDeliveriesByDate(dateString).reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
+  return getDeliveriesByDate(dateString).reduce((total, delivery) => total + (delivery.netWeight ?? 0), 0);
 }
 
 export const customerNetWeightTotals = Object.values(
-  entries.reduce((acc, entry) => {
-    const { userId, customerName, netWeight } = entry;
+  entries.reduce((acc, delivery) => {
+    const { userId, customerName, netWeight } = delivery;
 
     if (!acc[userId]) {
       acc[userId] = {
         userId,
         customerName,
-        totalWeight: 0,
+        totalNetWeight: 0,
       };
     }
 
-    acc[userId].totalWeight += netWeight ?? 0;
+    acc[userId].totalNetWeight += netWeight ?? 0;
 
     return acc;
   }, {}),
