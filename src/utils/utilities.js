@@ -1,17 +1,17 @@
 import entries from '../components/deliveries/entries';
 
 export const today = new Date();
-
-export const todayString = [
-  today.getFullYear(),
-  String(today.getMonth() + 1).padStart(2, '0'),
-  String(today.getDate()).padStart(2, '0'),
-].join('-');
-export const yesterdayString = [
-  today.getFullYear(),
-  String(today.getMonth() + 1).padStart(2, '0'),
-  String(today.getDate() - 1).padStart(2, '0'),
-].join('-');
+export const yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
+function getDateString(date) {
+  return [
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, '0'),
+    String(date.getDate()).padStart(2, '0'),
+  ].join('-');
+}
+export const todayString = getDateString(today);
+export const yesterdayString = getDateString(yesterday);
 
 export function getEntriesByDate(date = todayString) {
   return entries.filter((entry) => entry.date === date);
@@ -24,6 +24,10 @@ export function getEntriesByDate(date = todayString) {
 export const sumTotalEntriesWeight = entries.reduce((acc, cur) => {
   return acc + cur.netWeight;
 }, 0);
+// gets date strings and returns sum of weights in that date
+export function totalWeightInDate(dateStr) {
+  return getEntriesByDate(dateStr).reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
+}
 
 export const customerWeights = Object.values(
   entries.reduce((acc, entry) => {
@@ -42,3 +46,14 @@ export const customerWeights = Object.values(
     return acc;
   }, {}),
 );
+// returns number
+export function getTodayChange() {
+  const todayWeights = totalWeightInDate(todayString);
+  const yesterdayWeights = totalWeightInDate(yesterdayString);
+  console.log(todayWeights, yesterdayWeights);
+  if (yesterdayWeights === 0) {
+    return 0;
+  } else {
+    return Number(((todayWeights - yesterdayWeights) / yesterdayWeights) * 100).toFixed(2);
+  }
+}

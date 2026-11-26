@@ -1,5 +1,6 @@
 import {
   LuAnvil,
+  LuArrowDown,
   // LuArrowDown,
   LuArrowUp,
   LuAward,
@@ -13,20 +14,23 @@ import DeliveryTable from '../deliveries/DeliveryTable';
 
 import {
   customerWeights,
-  getEntriesByDate,
+  getTodayChange,
   sumTotalEntriesWeight,
   today,
   todayString,
+  totalWeightInDate,
+  yesterday,
   yesterdayString,
 } from '../../utils/utilities';
 function DashboardLayout() {
-  const todayWeight = getEntriesByDate(todayString).reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
-  const yesterdayWeight = getEntriesByDate(yesterdayString).reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
+  const todayWeight = totalWeightInDate(todayString);
+  const yesterdayWeight = totalWeightInDate(yesterdayString);
   const topFiveCustomers = customerWeights
     .slice()
     .sort((a, b) => b.totalWeight - a.totalWeight)
     .slice(0, 5);
-
+  const todayChange = getTodayChange();
+  console.log(todayChange);
   return (
     <>
       {/* INFO BOXES */}
@@ -42,13 +46,19 @@ function DashboardLayout() {
               <div className='font-bold text-heading text-2xl'>
                 {Intl.NumberFormat('fa-IR').format(todayWeight)} کیلوگرم
               </div>
-              <div className=' flex flex-col justify-center items-center text-xs'>
-                <div className='text-green-700 flex items-center'>
-                  ۲۳.۷% <LuArrowUp />
-                  {/* <LuArrowDown /> */}
+              {todayChange !== 0 && (
+                <div className=' flex flex-col justify-center items-center text-xs'>
+                  <div
+                    className={
+                      todayChange > 0 ? 'text-green-700 flex items-center' : 'text-red-700 flex items-center gap-1'
+                    }
+                  >
+                    {todayChange > 0 ? <LuArrowUp /> : <LuArrowDown />} {Intl.NumberFormat('fa-IR').format(todayChange)}
+                    %
+                  </div>
+                  <div>نسبت به دیروز</div>
                 </div>
-                <div>نسبت به دیروز</div>
-              </div>
+              )}
             </div>
             <p className='mt-2 text-muted text-xs'>
               در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(today)}
@@ -67,7 +77,7 @@ function DashboardLayout() {
               {Intl.NumberFormat('fa-IR').format(yesterdayWeight)} کیلوگرم
             </div>
             <p className='mt-2 text-muted text-xs'>
-              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(today) /* ! NEED FIX */}
+              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(yesterday)}
             </p>
           </div>
         </div>
@@ -124,56 +134,6 @@ function DashboardLayout() {
                 </div>
               </div>
             ))}
-            {/* <div className='bg-gray-50 rounded-md overflow-hidden px-2 py-1 text-black flex w-full gap-2'>
-              <div className='flex justify-center items-center bg-primary text-white w-8 rounded-lg'>
-                {new Intl.NumberFormat('fa-IR').format(1)}
-              </div>
-              <div className='p-1'>علی رضایی</div>
-              <div className='p-1 mr-auto flex gap-1.5'>
-                <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(98000)}</span>
-                <span>کیلوگرم</span>
-              </div>
-            </div>
-            <div className='bg-gray-50 rounded-md overflow-hidden px-2 py-1 text-black flex w-full gap-2'>
-              <div className='flex justify-center items-center bg-primary text-white w-8 rounded-lg'>
-                {new Intl.NumberFormat('fa-IR').format(2)}
-              </div>
-              <div className='p-1'>محمد احمدی</div>
-              <div className='p-1 mr-auto flex gap-1.5'>
-                <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(84500)}</span>
-                <span>کیلوگرم</span>
-              </div>
-            </div>
-            <div className='bg-gray-50 rounded-md overflow-hidden px-2 py-1 text-black flex w-full gap-2'>
-              <div className='flex justify-center items-center bg-primary text-white w-8 rounded-lg'>
-                {new Intl.NumberFormat('fa-IR').format(3)}
-              </div>
-              <div className='p-1'>حسین کریمی</div>
-              <div className='p-1 mr-auto flex gap-1.5'>
-                <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(79300)}</span>
-                <span>کیلوگرم</span>
-              </div>
-            </div>
-            <div className='bg-gray-50 rounded-md overflow-hidden px-2 py-1 text-black flex w-full gap-2'>
-              <div className='flex justify-center items-center bg-primary text-white w-8 rounded-lg'>
-                {new Intl.NumberFormat('fa-IR').format(4)}
-              </div>
-              <div className='p-1'>رضا مرادی</div>
-              <div className='p-1 mr-auto flex gap-1.5'>
-                <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(73800)}</span>
-                <span>کیلوگرم</span>
-              </div>
-            </div>
-            <div className='bg-gray-50 rounded-md overflow-hidden px-2 py-1 text-black flex w-full gap-2'>
-              <div className='flex justify-center items-center bg-primary text-white w-8 rounded-lg'>
-                {new Intl.NumberFormat('fa-IR').format(5)}
-              </div>
-              <div className='p-1'>مهدی حسینی</div>
-              <div className='p-1 mr-auto flex gap-1.5'>
-                <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(69400)}</span>
-                <span>کیلوگرم</span>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
