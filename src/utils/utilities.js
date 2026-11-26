@@ -3,25 +3,25 @@ import entries from '../components/deliveries/entries';
 export const todayDate = new Date();
 export const yesterdayDate = new Date();
 yesterdayDate.setDate(yesterdayDate.getDate() - 1);
-function formatDateToString(dateString) {
+function formatDateToString(date) {
   return [
-    dateString.getFullYear(),
-    String(dateString.getMonth() + 1).padStart(2, '0'),
-    String(dateString.getDate()).padStart(2, '0'),
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, '0'),
+    String(date.getDate()).padStart(2, '0'),
   ].join('-');
 }
 export const todayDateString = formatDateToString(todayDate);
 export const yesterdayDateString = formatDateToString(yesterdayDate);
 
 export function getDeliveriesByDate(dateString = todayDateString) {
-  return entries.filter((delivery) => delivery.date === dateString);
+  return entries.filter((delivery) => delivery.dateString === dateString);
 }
 
 // export function getCustomerEntries(userId) {
 //   return entries.filter((e) => (e.userId = userId));
 // }
 
-export const totalNetWeight = entries.reduce((acc, delivery) => acc + (delivery.netWeight ?? 0), 0);
+export const totalSeasonNetWeight = entries.reduce((acc, delivery) => acc + (delivery.netWeight ?? 0), 0);
 // gets date strings and returns sum of weights in that date
 export function getTotalNetWeightByDate(dateString) {
   return getDeliveriesByDate(dateString).reduce((total, delivery) => total + (delivery.netWeight ?? 0), 0);
@@ -35,11 +35,11 @@ export const customerNetWeightTotals = Object.values(
       acc[userId] = {
         userId,
         customerName,
-        totalNetWeight: 0,
+        totalSeasonNetWeight: 0,
       };
     }
 
-    acc[userId].totalNetWeight += netWeight ?? 0;
+    acc[userId].totalSeasonNetWeight += netWeight ?? 0;
 
     return acc;
   }, {}),

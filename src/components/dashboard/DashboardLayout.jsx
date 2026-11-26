@@ -14,7 +14,7 @@ import DeliveryTable from '../deliveries/DeliveryTable';
 import {
   customerNetWeightTotals,
   getTodayWeightChangePercent,
-  totalNetWeight,
+  totalSeasonNetWeight,
   todayDate,
   todayDateString,
   getTotalNetWeightByDate,
@@ -26,7 +26,7 @@ function DashboardLayout() {
   const yesterdayNetWeight = getTotalNetWeightByDate(yesterdayDateString);
   const topFiveCustomersByNetWeight = customerNetWeightTotals
     .slice()
-    .sort((a, b) => b.totalNetWeight - a.totalNetWeight)
+    .sort((a, b) => b.totalSeasonNetWeight - a.totalSeasonNetWeight)
     .slice(0, 5);
   const todayWeightChangePercent = getTodayWeightChangePercent();
   return (
@@ -90,7 +90,7 @@ function DashboardLayout() {
           <div>
             <p className='text-muted text-base'>مجموع ورودی فصل</p>
             <p className='mt-2 font-bold text-heading text-2xl'>
-              {Intl.NumberFormat('fa-IR').format(totalNetWeight)} کیلوگرم
+              {Intl.NumberFormat('fa-IR').format(totalSeasonNetWeight)} کیلوگرم
             </p>
             <p className='mt-2 text-muted text-xs'>از ابتدای فصل تا امروز</p>
           </div>
@@ -129,7 +129,9 @@ function DashboardLayout() {
                 </div>
                 <div className='p-1'>{customer.customerName}</div>
                 <div className='p-1 mr-auto flex gap-1.5'>
-                  <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(customer.totalNetWeight)}</span>
+                  <span className='text-lg'>
+                    {new Intl.NumberFormat('fa-IR').format(customer.totalSeasonNetWeight)}
+                  </span>
                   <span>کیلوگرم</span>
                 </div>
               </div>
