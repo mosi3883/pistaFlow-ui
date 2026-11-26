@@ -26,7 +26,7 @@ function DashboardLayout() {
   const yesterdayNetWeight = getTotalNetWeightByDate(yesterdayDateString);
   const topFiveCustomersByNetWeight = customerNetWeightTotals
     .slice()
-    .sort((a, b) => b.totalNetWeight - a.totalNetWeight)
+    .sort((a, b) => b.totalWeight - a.totalWeight)
     .slice(0, 5);
   const todayChange = getTodayWeightChangePercent();
   return (
@@ -127,7 +127,7 @@ function DashboardLayout() {
                 </div>
                 <div className='p-1'>{customer.customerName}</div>
                 <div className='p-1 mr-auto flex gap-1.5'>
-                  <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(customer.totalNetWeight)}</span>
+                  <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(customer.totalWeight)}</span>
                   <span>کیلوگرم</span>
                 </div>
               </div>

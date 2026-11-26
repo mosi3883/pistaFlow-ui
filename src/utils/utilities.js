@@ -13,8 +13,8 @@ function formatDateToString(date) {
 export const todayDateString = formatDateToString(todayDate);
 export const yesterdayDateString = formatDateToString(yesterdayDate);
 
-export function export function getDeliveriesByDate(dateString = todayDateString) {
-  return entries.filter((delivery) => delivery.date === date);
+export function getDeliveriesByDate(dateString = todayDateString) {
+  return entries.filter((delivery) => delivery.date === dateString);
 }
 
 // export function getCustomerEntries(userId) {
@@ -35,11 +35,11 @@ export const customerNetWeightTotals = Object.values(
       acc[userId] = {
         userId,
         customerName,
-        totalNetWeight: 0,
+        totalWeight: 0,
       };
     }
 
-    acc[userId].totalNetWeight += netWeight ?? 0;
+    acc[userId].totalWeight += netWeight ?? 0;
 
     return acc;
   }, {}),
