@@ -1,7 +1,6 @@
 import {
   LuAnvil,
   LuArrowDown,
-  // LuArrowDown,
   LuArrowUp,
   LuAward,
   LuCalendarDays,
@@ -30,7 +29,6 @@ function DashboardLayout() {
     .sort((a, b) => b.totalWeight - a.totalWeight)
     .slice(0, 5);
   const todayChange = getTodayChange();
-  console.log(todayChange);
   return (
     <>
       {/* INFO BOXES */}
@@ -61,7 +59,7 @@ function DashboardLayout() {
               )}
             </div>
             <p className='mt-2 text-muted text-xs'>
-              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(today)}
+              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeZone: 'UTC' }).format(today)}
             </p>
           </div>
         </div>
@@ -77,7 +75,7 @@ function DashboardLayout() {
               {Intl.NumberFormat('fa-IR').format(yesterdayWeight)} کیلوگرم
             </div>
             <p className='mt-2 text-muted text-xs'>
-              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(yesterday)}
+              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeZone: 'UTC' }).format(yesterday)}
             </p>
           </div>
         </div>

@@ -36,7 +36,7 @@ function DeliveryTable({ latest = false }) {
               key={delivery.id}
             >
               <td className='px-4 py-4 text-sm text-right'>
-                {Intl.DateTimeFormat('fa-IR').format(new Date(delivery.date))}
+                {Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeZone: 'UTC' }).format(new Date(delivery.date))}
               </td>
               <td className='px-4 py-4 text-sm text-right'>{delivery.code}</td>
               <td className='px-4 py-4 text-sm text-right'>{delivery.customerName}</td>
@@ -49,13 +49,13 @@ function DeliveryTable({ latest = false }) {
                     {Intl.NumberFormat('fa-IR').format(delivery.grossWeight)}
                   </td>
                   <td className='px-4 py-4 text-sm text-right'>
-                    {delivery.tareWeight ? Intl.NumberFormat('fa-IR').format(delivery.tareWeight) : '-'}
+                    {delivery.tareWeight !== null ? Intl.NumberFormat('fa-IR').format(delivery.tareWeight) : '-'}
                   </td>
                 </>
               )}
               <td className='px-4 py-4 text-sm text-right'>
                 {' '}
-                {delivery.tareWeight ? Intl.NumberFormat('fa-IR').format(delivery.netWeight) : '-'}
+                {delivery.tareWeight !== null ? Intl.NumberFormat('fa-IR').format(delivery.netWeight) : '-'}
               </td>
               {latest ? (
                 ''

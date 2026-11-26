@@ -21,9 +21,7 @@ export function getEntriesByDate(date = todayString) {
 //   return entries.filter((e) => (e.userId = userId));
 // }
 
-export const sumTotalEntriesWeight = entries.reduce((acc, cur) => {
-  return acc + cur.netWeight;
-}, 0);
+export const sumTotalEntriesWeight = entries.reduce((acc, cur) => acc + (cur.netWeight ?? 0), 0);
 // gets date strings and returns sum of weights in that date
 export function totalWeightInDate(dateStr) {
   return getEntriesByDate(dateStr).reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
@@ -54,6 +52,6 @@ export function getTodayChange() {
   if (yesterdayWeights === 0) {
     return 0;
   } else {
-    return Number(((todayWeights - yesterdayWeights) / yesterdayWeights) * 100).toFixed(2);
+    return Number((((todayWeights - yesterdayWeights) / yesterdayWeights) * 100).toFixed(2));
   }
 }
