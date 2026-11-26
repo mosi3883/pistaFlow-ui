@@ -8,27 +8,27 @@ import {
   LuPackageCheck,
   LuWeight,
 } from 'react-icons/lu';
-import DashboardDeliveryChart from './DashboardDeliveryChart';
+import DailyDeliveryWeightChart from './DailyDeliveryWeightChart';
 import DeliveryTable from '../deliveries/DeliveryTable';
 
 import {
-  customerWeights,
-  getTodayChange,
-  sumTotalEntriesWeight,
-  today,
-  todayString,
-  totalWeightInDate,
-  yesterday,
-  yesterdayString,
+  customerNetWeightTotals,
+  getTodayWeightChangePercent,
+  totalNetWeight,
+  todayDate,
+  todayDateString,
+  getTotalNetWeightByDate,
+  yesterdayDateString,
+  yesterdayDate,
 } from '../../utils/utilities';
 function DashboardLayout() {
-  const todayWeight = totalWeightInDate(todayString);
-  const yesterdayWeight = totalWeightInDate(yesterdayString);
-  const topFiveCustomers = customerWeights
+  const todayNetWeight = getTotalNetWeightByDate(todayDateString);
+  const yesterdayNetWeight = getTotalNetWeightByDate(yesterdayDateString);
+  const topFiveCustomersByNetWeight = customerNetWeightTotals
     .slice()
     .sort((a, b) => b.totalWeight - a.totalWeight)
     .slice(0, 5);
-  const todayChange = getTodayChange();
+  const todayChange = getTodayWeightChangePercent();
   return (
     <>
       {/* INFO BOXES */}
@@ -42,9 +42,9 @@ function DashboardLayout() {
             <p className='text-muted text-base'>وزن خالص ورودی امروز</p>
             <div className='mt-2  flex items-center justify-between'>
               <div className='font-bold text-heading text-2xl'>
-                {Intl.NumberFormat('fa-IR').format(todayWeight)} کیلوگرم
+                {Intl.NumberFormat('fa-IR').format(todayNetWeight)} کیلوگرم
               </div>
-              {todayChange !== 0 && (
+              {todayChange !== null && (
                 <div className=' flex flex-col justify-center items-center text-xs'>
                   <div
                     className={
@@ -59,7 +59,7 @@ function DashboardLayout() {
               )}
             </div>
             <p className='mt-2 text-muted text-xs'>
-              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeZone: 'UTC' }).format(today)}
+              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(todayDate)}
             </p>
           </div>
         </div>
@@ -72,10 +72,10 @@ function DashboardLayout() {
           <div>
             <p className='text-muted text-base'>وزن خالص ورودی دیروز</p>
             <div className='font-bold text-heading text-2xl'>
-              {Intl.NumberFormat('fa-IR').format(yesterdayWeight)} کیلوگرم
+              {Intl.NumberFormat('fa-IR').format(yesterdayNetWeight)} کیلوگرم
             </div>
             <p className='mt-2 text-muted text-xs'>
-              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeZone: 'UTC' }).format(yesterday)}
+              در تاریخ {new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium' }).format(yesterdayDate)}
             </p>
           </div>
         </div>
@@ -88,7 +88,7 @@ function DashboardLayout() {
           <div>
             <p className='text-muted text-base'>مجموع ورودی فصل</p>
             <p className='mt-2 font-bold text-heading text-2xl'>
-              {Intl.NumberFormat('fa-IR').format(sumTotalEntriesWeight)} کیلوگرم
+              {Intl.NumberFormat('fa-IR').format(totalNetWeight)} کیلوگرم
             </p>
             <p className='mt-2 text-muted text-xs'>از ابتدای فصل تا امروز</p>
           </div>
@@ -105,7 +105,7 @@ function DashboardLayout() {
             </div>
           </div>
           <div className='flex items-center justify-center'>
-            <DashboardDeliveryChart />
+            <DailyDeliveryWeightChart />
           </div>
         </div>
         {/* Most Income */}
@@ -117,7 +117,7 @@ function DashboardLayout() {
             </div>
           </div>
           <div className='flex flex-col gap-2'>
-            {topFiveCustomers.map((customer, index) => (
+            {topFiveCustomersByNetWeight.map((customer, index) => (
               <div
                 className='bg-gray-50 rounded-md overflow-hidden px-2 py-1 text-black flex w-full gap-2'
                 key={customer.userId}
@@ -143,7 +143,7 @@ function DashboardLayout() {
           </div>
         </div>
         <div>
-          <DeliveryTable latest />
+          <DeliveryTable showLatest />
         </div>
       </div>
     </>

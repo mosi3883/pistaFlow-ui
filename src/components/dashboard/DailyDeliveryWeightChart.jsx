@@ -46,7 +46,7 @@ const data = [
 ];
 
 // #endregion
-function DashboardDeliveryChart() {
+function DailyDeliveryWeightChart() {
   return (
     <LineChart
       style={{ width: '100%', aspectRatio: 3, maxWidth: 768 }}
@@ -69,4 +69,4 @@ function DashboardDeliveryChart() {
     </LineChart>
   );
 }
-export default DashboardDeliveryChart;
+export default DailyDeliveryWeightChart;

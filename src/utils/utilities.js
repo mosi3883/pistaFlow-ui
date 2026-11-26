@@ -1,19 +1,19 @@
 import entries from '../components/deliveries/entries';
 
-export const today = new Date();
-export const yesterday = new Date();
-yesterday.setDate(yesterday.getDate() - 1);
-function getDateString(date) {
+export const todayDate = new Date();
+export const yesterdayDate = new Date();
+yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+function formatDateToString(date) {
   return [
     date.getFullYear(),
     String(date.getMonth() + 1).padStart(2, '0'),
     String(date.getDate()).padStart(2, '0'),
   ].join('-');
 }
-export const todayString = getDateString(today);
-export const yesterdayString = getDateString(yesterday);
+export const todayDateString = formatDateToString(todayDate);
+export const yesterdayDateString = formatDateToString(yesterdayDate);
 
-export function getEntriesByDate(date = todayString) {
+export function getDeliveriesByDate(date = todayDateString) {
   return entries.filter((entry) => entry.date === date);
 }
 
@@ -21,13 +21,13 @@ export function getEntriesByDate(date = todayString) {
 //   return entries.filter((e) => (e.userId = userId));
 // }
 
-export const sumTotalEntriesWeight = entries.reduce((acc, cur) => acc + (cur.netWeight ?? 0), 0);
+export const totalNetWeight = entries.reduce((acc, delivery) => acc + (delivery.netWeight ?? 0), 0);
 // gets date strings and returns sum of weights in that date
-export function totalWeightInDate(dateStr) {
-  return getEntriesByDate(dateStr).reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
+export function getTotalNetWeightByDate(dateString) {
+  return getDeliveriesByDate(dateString).reduce((total, entry) => total + (entry.netWeight ?? 0), 0);
 }
 
-export const customerWeights = Object.values(
+export const customerNetWeightTotals = Object.values(
   entries.reduce((acc, entry) => {
     const { userId, customerName, netWeight } = entry;
 
@@ -45,13 +45,10 @@ export const customerWeights = Object.values(
   }, {}),
 );
 // returns number
-export function getTodayChange() {
-  const todayWeights = totalWeightInDate(todayString);
-  const yesterdayWeights = totalWeightInDate(yesterdayString);
-  console.log(todayWeights, yesterdayWeights);
-  if (yesterdayWeights === 0) {
-    return 0;
-  } else {
-    return Number((((todayWeights - yesterdayWeights) / yesterdayWeights) * 100).toFixed(2));
-  }
+export function getTodayWeightChangePercent() {
+  const todayWeights = getTotalNetWeightByDate(todayDateString);
+  const yesterdayWeights = getTotalNetWeightByDate(yesterdayDateString);
+  return yesterdayWeights === 0
+    ? null
+    : Number((((todayWeights - yesterdayWeights) / yesterdayWeights) * 100).toFixed(2));
 }

@@ -20,7 +20,7 @@ function DeliveryForm({ editMode = false }) {
 
   const hasBothWeights = gross !== undefined && gross !== '' && tare !== undefined && tare !== '';
   const netWeight = hasBothWeights ? Number(gross) - Number(tare) : null;
-  console.log(gross, tare, netWeight);
+
   function onSubmit(data) {
     const newDelivery = { ...data, netWeight };
     console.log(newDelivery);

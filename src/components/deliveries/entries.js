@@ -45,7 +45,7 @@
 //     netWeight: tareWeight === null ? null : grossWeight - tareWeight,
 //   };
 // });
-// console.log(entries);
+
 const entries = [
   {
     id: 1,
