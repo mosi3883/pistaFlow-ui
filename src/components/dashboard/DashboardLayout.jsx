@@ -26,9 +26,9 @@ function DashboardLayout() {
   const yesterdayNetWeight = getTotalNetWeightByDate(yesterdayDateString);
   const topFiveCustomersByNetWeight = customerNetWeightTotals
     .slice()
-    .sort((a, b) => b.totalWeight - a.totalWeight)
+    .sort((a, b) => b.totalNetWeight - a.totalNetWeight)
     .slice(0, 5);
-  const todayChange = getTodayWeightChangePercent();
+  const todayWeightChangePercent = getTodayWeightChangePercent();
   return (
     <>
       {/* INFO BOXES */}
@@ -44,15 +44,17 @@ function DashboardLayout() {
               <div className='font-bold text-heading text-2xl'>
                 {Intl.NumberFormat('fa-IR').format(todayNetWeight)} کیلوگرم
               </div>
-              {todayChange !== null && (
+              {todayWeightChangePercent !== null && (
                 <div className=' flex flex-col justify-center items-center text-xs'>
                   <div
                     className={
-                      todayChange > 0 ? 'text-green-700 flex items-center' : 'text-red-700 flex items-center gap-1'
+                      todayWeightChangePercent > 0
+                        ? 'text-green-700 flex items-center'
+                        : 'text-red-700 flex items-center gap-1'
                     }
                   >
-                    {todayChange > 0 ? <LuArrowUp /> : <LuArrowDown />} {Intl.NumberFormat('fa-IR').format(todayChange)}
-                    %
+                    {todayWeightChangePercent > 0 ? <LuArrowUp /> : <LuArrowDown />}{' '}
+                    {Intl.NumberFormat('fa-IR').format(todayWeightChangePercent)}%
                   </div>
                   <div>نسبت به دیروز</div>
                 </div>
@@ -127,7 +129,7 @@ function DashboardLayout() {
                 </div>
                 <div className='p-1'>{customer.customerName}</div>
                 <div className='p-1 mr-auto flex gap-1.5'>
-                  <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(customer.totalWeight)}</span>
+                  <span className='text-lg'>{new Intl.NumberFormat('fa-IR').format(customer.totalNetWeight)}</span>
                   <span>کیلوگرم</span>
                 </div>
               </div>

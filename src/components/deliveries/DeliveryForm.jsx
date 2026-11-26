@@ -15,11 +15,12 @@ function DeliveryForm({ editMode = false }) {
     formState: { errors },
   } = useForm();
 
-  const gross = useWatch({ control, name: 'grossWeight' });
-  const tare = useWatch({ control, name: 'tareWeight' });
+  const grossWeight = useWatch({ control, name: 'grossWeight' });
+  const tareWeight = useWatch({ control, name: 'tareWeight' });
 
-  const hasBothWeights = gross !== undefined && gross !== '' && tare !== undefined && tare !== '';
-  const netWeight = hasBothWeights ? Number(gross) - Number(tare) : null;
+  const hasBothWeights =
+    grossWeight !== undefined && grossWeight !== '' && tareWeight !== undefined && tareWeight !== '';
+  const netWeight = hasBothWeights ? Number(grossWeight) - Number(tareWeight) : null;
 
   function onSubmit(data) {
     const newDelivery = { ...data, netWeight };
@@ -100,14 +101,14 @@ function DeliveryForm({ editMode = false }) {
 
         <div className='flex justify-between mb-4'>
           <div className='flex flex-col gap-2'>
-            <label htmlFor='gross' className='flex items-center gap-0.5 font-semibold text-base'>
+            <label htmlFor='grossWeight' className='flex items-center gap-0.5 font-semibold text-base'>
               <LuScale size={18} />
               <span>وزن پر(kg)</span>
               {errors.grossWeight ? <span className='text-red-600 text-xs'>({errors.grossWeight?.message})</span> : ''}
             </label>
 
             <input
-              id='gross'
+              id='grossWeight'
               type='number'
               className='block px-3 py-3 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full h-10 text-sm transition-colors'
               placeholder='وزن پر  را وارد کنید'
@@ -118,14 +119,14 @@ function DeliveryForm({ editMode = false }) {
             />
           </div>
           <div className='flex flex-col gap-2'>
-            <label htmlFor='tare' className='flex items-center gap-0.5 font-semibold text-base'>
+            <label htmlFor='tareWeight' className='flex items-center gap-0.5 font-semibold text-base'>
               <LuScale size={18} />
               <span> وزن خالی(kg)</span>
               {errors.tareWeight ? <span className='text-red-600 text-xs'>({errors.tareWeight?.message})</span> : ''}
             </label>
 
             <input
-              id='tare'
+              id='tareWeight'
               type='number'
               className='block px-3 py-3 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full h-10 text-sm transition-colors'
               placeholder='وزن خالی را وارد کنید'

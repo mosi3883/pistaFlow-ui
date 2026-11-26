@@ -2,46 +2,46 @@ import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'r
 // import { RechartsDevtools } from '@recharts/devtools';
 
 // #region Sample data
-const data = [
+const dailyDeliveryWeightData = [
   {
-    name: 'آبان ۴',
-    weight: 27562,
+    dateLabel: 'آبان ۴',
+    netWeight: 27562,
   },
   {
-    name: 'آبان ۵',
-    weight: 24362,
+    dateLabel: 'آبان ۵',
+    netWeight: 24362,
   },
   {
-    name: 'آبان ۶',
-    weight: 12750,
+    dateLabel: 'آبان ۶',
+    netWeight: 12750,
   },
   {
-    name: 'آبان ۷',
-    weight: 34152,
+    dateLabel: 'آبان ۷',
+    netWeight: 34152,
   },
   {
-    name: 'آبان ۸',
-    weight: 30856,
+    dateLabel: 'آبان ۸',
+    netWeight: 30856,
   },
   {
-    name: 'آبان ۹',
-    weight: 24850,
+    dateLabel: 'آبان ۹',
+    netWeight: 24850,
   },
   {
-    name: 'آبان ۱۰',
-    weight: 12750,
+    dateLabel: 'آبان ۱۰',
+    netWeight: 12750,
   },
   {
-    name: 'آبان ۱۱',
-    weight: 34152,
+    dateLabel: 'آبان ۱۱',
+    netWeight: 34152,
   },
   {
-    name: 'آبان ۱۲',
-    weight: 30856,
+    dateLabel: 'آبان ۱۲',
+    netWeight: 30856,
   },
   {
-    name: 'آبان ۱۳',
-    weight: 24850,
+    dateLabel: 'آبان ۱۳',
+    netWeight: 24850,
   },
 ];
 
@@ -51,7 +51,7 @@ function DailyDeliveryWeightChart() {
     <LineChart
       style={{ width: '100%', aspectRatio: 3, maxWidth: 768 }}
       responsive
-      data={data}
+      data={dailyDeliveryWeightData}
       margin={{
         top: 20,
         right: 20,
@@ -60,8 +60,8 @@ function DailyDeliveryWeightChart() {
       }}
     >
       <CartesianGrid strokeDasharray='5 5' />
-      <Line type='monotone' dataKey='weight' strokeWidth={2} name='ورودی روز' />
-      <XAxis dataKey='name' />
+      <Line type='monotone' dataKey='netWeight' strokeWidth={2} name='ورودی روز' />
+      <XAxis dataKey='dateLabel' />
       <YAxis width='auto' label={{ value: 'وزن ورودی', position: 'insideLeft', angle: -90 }} />
       <Legend position='insideBottomRight' />
       <Tooltip />

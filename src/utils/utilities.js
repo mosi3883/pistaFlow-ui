@@ -3,11 +3,11 @@ import entries from '../components/deliveries/entries';
 export const todayDate = new Date();
 export const yesterdayDate = new Date();
 yesterdayDate.setDate(yesterdayDate.getDate() - 1);
-function formatDateToString(date) {
+function formatDateToString(dateString) {
   return [
-    date.getFullYear(),
-    String(date.getMonth() + 1).padStart(2, '0'),
-    String(date.getDate()).padStart(2, '0'),
+    dateString.getFullYear(),
+    String(dateString.getMonth() + 1).padStart(2, '0'),
+    String(dateString.getDate()).padStart(2, '0'),
   ].join('-');
 }
 export const todayDateString = formatDateToString(todayDate);
@@ -35,11 +35,11 @@ export const customerNetWeightTotals = Object.values(
       acc[userId] = {
         userId,
         customerName,
-        totalWeight: 0,
+        totalNetWeight: 0,
       };
     }
 
-    acc[userId].totalWeight += netWeight ?? 0;
+    acc[userId].totalNetWeight += netWeight ?? 0;
 
     return acc;
   }, {}),
