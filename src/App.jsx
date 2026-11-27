@@ -13,8 +13,11 @@ function App() {
         <Route path='/customers' element={<Customers />} />
         <Route path='/deliveries' element={<Deliveries />} />
         <Route path='/deliveries/new' element={<CreateDelivery />} />
-        <Route path='/accounting' element={<p>حسابداری</p>} />
-        <Route path='/reports' element={<p>گزارش ها</p>} />
+        <Route path='/receipts' element={<p>دریافتی ها</p>} />
+        <Route path='/expenses' element={<p>هزینه‌های جانبی</p>} />
+        <Route path='/customer-invoices' element={<p>صورتحساب مشتریان</p>} />
+        <Route path='/checks' element={<p>مدیریت چک ها</p>} />
+        <Route path='/reports' element={<p>گزارش‌ها</p>} />
         <Route path='/settings' element={<p>تنظیمات</p>} />
       </Route>
     </Routes>
