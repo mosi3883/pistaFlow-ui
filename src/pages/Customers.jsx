@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import CustomerHeader from '../components/customers/CustomerHeader';
 import CustomerSearch from '../components/customers/CustomerSearch';
 import CustomerTable from '../components/customers/CustomerTable';
 
 function Customers() {
+  const [search, setSearch] = useState('');
   return (
     <>
       <CustomerHeader />
@@ -11,9 +13,9 @@ function Customers() {
           <h3 className='font-semibold text-heading'>لیست مشتریان</h3>
           <span className='text-muted text-sm'>۱۸۶ مشتری</span>
         </div>
-        <CustomerSearch />
+        <CustomerSearch onSearch={setSearch} />
 
-        <CustomerTable />
+        <CustomerTable search={search} />
       </div>
     </>
   );

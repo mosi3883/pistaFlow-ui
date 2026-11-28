@@ -56,8 +56,17 @@ const customers = [
   { id: 49, name: 'محسن حیدری', phone: '09000000049' },
   { id: 50, name: 'سجاد مرادی', phone: '09000000050' },
 ];
-function CustomerTable() {
+function CustomerTable({ search }) {
+  console.log(search);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const displayedCustomers = customers.filter(function (customer) {
+    return search
+      .trim()
+      .split(/\s+/)
+      .map((i) => customer.name.includes(i))
+      .every(Boolean);
+  });
   const [customer, setCustomer] = useState({});
   function handleEdit(id) {
     setCustomer(customers.find((c) => c.id === id));
@@ -67,6 +76,7 @@ function CustomerTable() {
   function handleClose() {
     setIsModalOpen(false);
   }
+
   return (
     <>
       <table className='w-full'>
@@ -78,7 +88,7 @@ function CustomerTable() {
           </tr>
         </thead>
         <tbody>
-          {customers.map((customer) => (
+          {displayedCustomers.map((customer) => (
             <tr
               className='hover:bg-slate-50 border-border/30 border-b transition-colors duration-150'
               key={customer.id}
