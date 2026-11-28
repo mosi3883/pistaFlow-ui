@@ -2,8 +2,8 @@ import { useForm } from 'react-hook-form';
 import Button from '../../ui/Button';
 import { toast } from 'react-toastify';
 
-function CustomerForm({ handleClose, editMode = false, customer = {} }) {
-  console.log('editMode', editMode);
+function CustomerForm({ handleClose, editMode = false, customer = {}, addCustomer, updateCustomer }) {
+  console.log('editMode', editMode, updateCustomer);
   const {
     register,
     handleSubmit,
@@ -11,7 +11,7 @@ function CustomerForm({ handleClose, editMode = false, customer = {} }) {
   } = useForm();
   function onSubmit(data) {
     if (editMode) {
-      console.log('new data', data);
+      updateCustomer(customer.id, data);
       // onsuccess show 'کاربر با موفقیت بروز شد'
       toast('کاربر با موفقیت بروز شد');
       // on success close the modal
@@ -19,7 +19,7 @@ function CustomerForm({ handleClose, editMode = false, customer = {} }) {
       // on error show 'خطا در ویرایش کاربر'
       //toast('خطا در ویرایش کاربر');
     } else {
-      console.log(data);
+      addCustomer(data);
       // onsuccess show 'کاربر با موفقیت اضافه شد'
       toast('کاربر با موفقیت اضافه شد');
       // on success close the modal
@@ -47,7 +47,7 @@ function CustomerForm({ handleClose, editMode = false, customer = {} }) {
             required: 'نام را وارد کنید!',
             type: String,
           })}
-          value={customer ? customer?.name : ''}
+          defaultValue={customer ? customer?.name : ''}
         />
       </div>
       <div className='flex flex-col gap-2'>
@@ -62,7 +62,7 @@ function CustomerForm({ handleClose, editMode = false, customer = {} }) {
           className='block px-3 py-3 border border-border focus:border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 w-full text-sm transition-colors'
           placeholder='شماره تلفن مشتری را وارد کنید'
           autoComplete='off'
-          value={customer ? customer?.phone : ''}
+          defaultValue={customer ? customer?.phone : ''}
           {...register('phone', {
             required: 'تلفن را وارد کنید!',
             type: String,

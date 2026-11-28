@@ -3,7 +3,8 @@ import Modal from '../../ui/Modal';
 import Button from '../../ui/Button';
 import CustomerForm from './CustomerForm';
 
-function CustomerHeader() {
+function CustomerHeader({ addCustomer, updateCustomer }) {
+  console.log(updateCustomer);
   const [isModalOpen, setIsModalOpen] = useState(false);
   function handleClose() {
     setIsModalOpen(false);
@@ -19,7 +20,7 @@ function CustomerHeader() {
       </Button>
       <Modal isOpen={isModalOpen} handleClose={handleClose} className='max-w-md'>
         <h3 className='mb-4 font-semibold text-heading'>افزودن مشتری</h3>
-        <CustomerForm handleClose={handleClose} />
+        <CustomerForm handleClose={handleClose} addCustomer={addCustomer} updateCustomer={updateCustomer} />
       </Modal>
     </header>
   );
